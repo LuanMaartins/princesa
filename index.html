@@ -161,30 +161,25 @@
         }
 
         .pause-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 1.5em;
-    background-color: pink;
-    color: black;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: 20px;
-    animation: pulse 1.5s infinite;
-}
-
-.pause-btn:hover {
-    background-color: red;
-    color: white;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            font-size: 1.5em;
+            background-color: pink;
+            color: black;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            animation: infinite;
+            z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+        }
+        
+        .pause-btn:hover {
+            background-color: red;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -270,24 +265,23 @@
 
         let audio = document.getElementById("musica");
 
-    function iniciarAudio() {
-        audio.play().catch(error => console.log("Autoplay bloqueado:", error));
-        document.removeEventListener("click", iniciarAudio);
-        document.removeEventListener("touchstart", iniciarAudio);
-    }
-
-    document.addEventListener("click", iniciarAudio);
-    document.addEventListener("touchstart", iniciarAudio);
-
+        function iniciarAudio() {
+            audio.play().catch(error => console.log("Autoplay bloqueado:", error));
+            document.removeEventListener("click", iniciarAudio);
+            document.removeEventListener("touchstart", iniciarAudio);
+        }
+    
+        document.addEventListener("click", iniciarAudio);
+        document.addEventListener("touchstart", iniciarAudio);
+    
         function toggleAudio() {
-    let audio = document.getElementById("musica");
-    if (audio.paused) {
-        audio.play();
-    } else {
-        audio.pause();
-    }
-}
-
+            let audio = document.getElementById("musica");
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
     </script>
 </body>
 </html>
