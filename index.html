@@ -240,12 +240,16 @@
             }
         }       
 
-        window.onload = function() {
         let audio = document.getElementById("musica");
-        setTimeout(() => {
-            audio.play().catch(error => console.log("Autoplay bloqueado:", error));
-        }, 1000);
-    };
+
+    function iniciarAudio() {
+        audio.play().catch(error => console.log("Autoplay bloqueado:", error));
+        document.removeEventListener("click", iniciarAudio);
+        document.removeEventListener("touchstart", iniciarAudio);
+    }
+
+    document.addEventListener("click", iniciarAudio);
+    document.addEventListener("touchstart", iniciarAudio);
     </script>
 </body>
 </html>
