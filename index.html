@@ -176,18 +176,12 @@
     <section id="home">
         <img src="https://via.placeholder.com/800x400?text=Imagem+Especial" alt="Imagem especial"
             style="max-width: 80%; border-radius: 20px; box-shadow: 0 0 20px pink;">
-    </section>   
-
-    <video id="video" autoplay loop playsinline muted style="position: absolute; width: 1px; height: 1px; opacity: 0;">
-    <source src="https://your-server.com/silent-video.mp4" type="video/mp4">
-</video>
-
-<audio id="musica" loop>
-    <source src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/Iframe%20Shawn%20Mendes%20-%20Kid%20In%20Love%20(Official%20Audio)%20%5BQiEz1GleIbs%5D.mp3" type="audio/mp3">
-</audio>
-
-<div id="overlay" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;background:rgba(0,0,0,0);"></div>
-
+    </section>       
+    
+    <audio id="musica" controls autoplay loop>
+        <source src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/Iframe%20Shawn%20Mendes%20-%20Kid%20In%20Love%20(Official%20Audio)%20%5BQiEz1GleIbs%5D.mp3" type="audio/mp3">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
     
     <section id="inteligencia">
         <h2>Inteligência</h2>
@@ -244,24 +238,7 @@
             if (event.target == modal) {
                 modal.style.display = "none";
             }
-        }
-
-        let audio = document.getElementById("musica");
-    let overlay = document.getElementById("overlay");
-
-    function iniciarAudio() {
-        audio.play().catch(error => console.log("Erro ao iniciar áudio:", error));
-        overlay.remove(); // Remove o overlay invisível após o primeiro clique
-    }
-
-    overlay.addEventListener("click", iniciarAudio);
-    
-    window.onload = function() {
-        setTimeout(() => {
-            iniciarAudio(); // Tenta iniciar automaticamente
-        }, 1000);
-    };
-        
+        }        
     </script>
 </body>
 </html>
