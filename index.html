@@ -159,6 +159,32 @@
             0% { transform: translateY(0); opacity: 1; }
             100% { transform: translateY(-100vh); opacity: 0; }
         }
+
+        .pause-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    background-color: pink;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
+    animation: pulse 1.5s infinite;
+}
+
+.pause-btn:hover {
+    background-color: red;
+    color: white;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
     </style>
 </head>
 <body>
@@ -182,6 +208,8 @@
         <source src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/Iframe%20Shawn%20Mendes%20-%20Kid%20In%20Love%20(Official%20Audio)%20%5BQiEz1GleIbs%5D.mp3" type="audio/mp3">
         Seu navegador não suporta o elemento de áudio.
     </audio>
+
+    <button class="pause-btn" onclick="toggleAudio()">⏸️</button>
     
     <section id="inteligencia">
         <h2>Inteligência</h2>
@@ -250,6 +278,16 @@
 
     document.addEventListener("click", iniciarAudio);
     document.addEventListener("touchstart", iniciarAudio);
+
+        function toggleAudio() {
+    let audio = document.getElementById("musica");
+    if (audio.paused) {
+        audio.play();
+    } else {
+        audio.pause();
+    }
+}
+
     </script>
 </body>
 </html>
