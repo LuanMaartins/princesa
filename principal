@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parabéns Princesa</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            scroll-behavior: smooth;
+            margin: 0;
+            overflow-x: hidden;
+            position: relative;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: black;
+            padding: 20px 0;
+            z-index: 1000;
+        }
+        h1 {
+            font-size: 3em;
+            font-family: 'Dancing Script', cursive;
+            text-shadow: 0 0 10px pink, 0 0 20px pink;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px pink, 0 0 20px pink;
+            }
+            to {
+                text-shadow: 0 0 20px red, 0 0 30px red;
+            }
+        }
+        nav {
+            width: 100%;
+            background: black;
+            padding: 10px 0;
+        }
+        nav a {
+            color: pink;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin: 10px;
+            padding: 5px 15px;
+            border: 2px solid pink;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            background-color: pink;
+            color: black;
+        }
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+        }
+        section {
+            padding: 100px 20px 50px;
+            min-height: 100vh;
+            scroll-margin-top: 140px;
+        }
+        audio {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 200px;
+            z-index: 1000;
+        }
+        .parabens-container {
+            margin-top: 30px;
+        }
+        .parabens-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1.5em;
+            background-color: pink;
+            color: black;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .parabens-btn:hover {
+            background-color: red;
+            color: white;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .modal-content {
+            background-color: pink;
+            color: black;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        .close {
+            color: red;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: black;
+        }
+        /* Fundo com corações */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .heart {
+            position: absolute;
+            bottom: -10px;
+            color: pink;
+            font-size: 20px;
+            opacity: 0.7;
+            animation: float 5s linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts"></div>
+    <header>
+        <h1>Parabéns Princesa</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#inteligencia">Inteligência</a>
+            <a href="#beleza">Beleza</a>
+            <a href="#companheirismo">Companheirismo</a>
+        </nav>
+    </header>
+    
+    <section id="home">
+        <img src="https://via.placeholder.com/800x400?text=Imagem+Especial" alt="Imagem especial"
+            style="max-width: 80%; border-radius: 20px; box-shadow: 0 0 20px pink;">
+    </section>
+    
+    <audio id="musica" controls autoplay loop>
+        <source src="musica.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+    
+    <section id="inteligencia">
+        <h2>Inteligência</h2>
+        <p>Você tem uma mente brilhante e uma sabedoria incrível.</p>
+        <img src="https://via.placeholder.com/800x400?text=Imagem+Especial" alt="Imagem especial"
+            style="max-width: 80%; border-radius: 20px; box-shadow: 0 0 20px pink;">
+    </section>
+    <section id="beleza">
+        <h2>Beleza</h2>
+        <p>Você é simplesmente radiante.</p>
+        <img src="https://via.placeholder.com/800x400?text=Imagem+Especial" alt="Imagem especial"
+            style="max-width: 80%; border-radius: 20px; box-shadow: 0 0 20px pink;">
+    </section>
+    <section id="companheirismo">
+        <h2>Companheirismo</h2>
+        <p>Você sempre está ao lado de quem precisa.</p>
+        <img src="https://via.placeholder.com/800x400?text=Imagem+Especial" alt="Imagem especial"
+            style="max-width: 80%; border-radius: 20px; box-shadow: 0 0 20px pink;">
+        <div class="parabens-container">
+            <button class="parabens-btn" onclick="abrirModal()">Parabéns!</button>
+        </div>
+    </section>
+    
+    <div id="parabensModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <p>Parabéns, minha princesa! 🎉❤️</p>
+        </div>
+    </div>
+    
+    <script>
+        function createHearts() {
+            const heartContainer = document.querySelector('.hearts');
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.textContent = '❤';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heartContainer.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }, 500);
+        }
+        createHearts();
+        function abrirModal() {
+            document.getElementById("parabensModal").style.display = "block";
+        }
+        function fecharModal() {
+            document.getElementById("parabensModal").style.display = "none";
+        }
+        window.onclick = function(event) {
+            let modal = document.getElementById("parabensModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
