@@ -22,11 +22,11 @@
             left: 0;
             width: 100%;
             background: black;
-            padding: 20px 0;
+            padding: 10px 0;
             z-index: 1000;
         }
         h1 {
-            font-size: 3em;
+            font-size: 2.5em;
             font-family: 'Dancing Script', cursive;
             text-shadow: 0 0 10px pink, 0 0 20px pink;
             animation: glow 1.5s infinite alternate;
@@ -40,16 +40,18 @@
             }
         }
         nav {
-            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             background: black;
-            padding: 10px 0;
+            padding: 10px;
+            gap: 10px;
         }
         nav a {
             color: pink;
             text-decoration: none;
-            font-size: 1.2em;
-            margin: 10px;
-            padding: 5px 15px;
+            font-size: 1em;
+            padding: 10px;
             border: 2px solid pink;
             border-radius: 10px;
             transition: 0.3s;
@@ -65,9 +67,11 @@
             justify-content: center;
             background-size: cover;
             background-position: center;
+            padding: 20px;
+            flex-direction: column;
         }
         section {
-            padding: 100px 20px 50px;
+            padding: 80px 20px 50px;
             min-height: 100vh;
             scroll-margin-top: 140px;
         }
@@ -118,7 +122,8 @@
             margin: 15% auto;
             padding: 20px;
             border-radius: 10px;
-            width: 50%;
+            width: 90%;
+            max-width: 400px;
             text-align: center;
             font-size: 1.5em;
         }
