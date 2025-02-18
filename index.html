@@ -16,6 +16,14 @@
             overflow: auto;
         }
 
+        html, body {
+    height: 100%;
+    overflow-y: auto; /* Garante a rolagem */
+    overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+    scroll-behavior: smooth; /* Suaviza a rolagem */
+    touch-action: manipulation; /* Melhora o toque no mobile */
+}
+
         .container {
             position: absolute;
             width: 100vw;
