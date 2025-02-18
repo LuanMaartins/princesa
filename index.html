@@ -13,7 +13,7 @@
             font-family: Arial, sans-serif;
             text-align: center;
             background-color: black;
-            overflow: hidden;
+            overflow: auto;
         }
 
         .container {
@@ -28,6 +28,7 @@
             font-family: 'Dancing Script', cursive;
             opacity: 0;
             transition: opacity 1s ease-in-out;
+            padding-top: 60px;
         }
 
         .active {
@@ -49,6 +50,9 @@
             transform: translateX(-50%);
             z-index: 1000;
             color: white;
+            background-color: black;
+            padding: 10px;
+            width: 100%;
         }
 
         h1, p, t {
