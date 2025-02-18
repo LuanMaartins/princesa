@@ -112,7 +112,7 @@
             color: white;
         }
 
-        .popup {
+        /*.popup {
             position: fixed;
             top: 50%;
             left: 50%;
@@ -124,7 +124,37 @@
             z-index: 1000;
             border-radius: 10px;
             color: black;
+        }*/
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffb6c1; /* Cor rosa claro */
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 1000;
+            border-radius: 15px; /* Bordas arredondadas */
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            min-width: 250px;
         }
+        
+        /* Botão de fechar */
+        .popup .close-btn {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            cursor: pointer;
+            font-size: 20px;
+            color: red;
+            font-weight: bold;
+        }
+
 
         .footer {
             position: fixed;
@@ -252,7 +282,7 @@
     <div id="popup" class="popup">
         <h2>Parabéns, princesa! 🎂❤️</h2>
         <p>Você merece tudo de melhor hoje e sempre!</p>
-        <button onclick="fecharPopup()">Fechar</button>
+        <span class="close-btn" onclick="fecharPopup()">✖</span>
     </div>
 
     <div id="creditos" class="creditos">
