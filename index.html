@@ -372,6 +372,11 @@
                 page.classList.remove('active');
             });
             document.getElementById(`pagina${pagina}`).classList.add('active');
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Rolagem suave
+            });    
         }
 
         function mostrarPopup() {
