@@ -334,67 +334,20 @@
         </div>
     </div>
 
+    <div id="popup" class="popup">
+        <h2>Parabéns, princesa! 🎂❤️</h2>
+        <p>Você merece tudo de melhor hoje e sempre!</p>
+        <span class="close-btn" onclick="fecharPopup()">✖</span>
+    </div>
 
-
-    <div id="popupParabens" class="popup">
-    <span class="close-btn" onclick="fecharPopup('popupParabens', abrirPopupPergunta)">&times;</span>
-    <p>Parabéns, princesa! 🎉</p>
-</div>
-
-<div id="popupPergunta" class="popup">
-    <p>Você e a Mônica? Se sim, quando foi nosso primeiro beijo?</p>
-    <input type="text" id="respostaData" placeholder="__/__/____">
-    <button onclick="verificarResposta()">Enviar</button>
-</div>
-
-<div id="popupRespostaCerta" class="popup">
-    <span class="close-btn" onclick="fecharPopup('popupRespostaCerta', abrirPopupCreditos)">&times;</span>
-    <p>Você acertou! ❤️</p>
-</div>
-
-<div id="popupRespostaErrada" class="popup">
-    <span class="close-btn" onclick="fecharPopup('popupRespostaErrada', abrirPopupCreditos)">&times;</span>
-    <p>Você não é ela.</p>
-</div>
- 
-    <div id="popupCreditos" class="creditos">
+    <div id="creditos" class="creditos">
         <h2>❤️ Dedicado à mulher mais incrível e maravilhosa do mundo! ❤️</h2>
         <h2>❤️ Feito pelo homem mais sortudo do mundo! ❤️</h2>
-        <button onclick="fecharPopup('popupCreditos')">Inicio</button>
+        <button onclick="reiniciar()">Inicio</button>
         <ag><p>Agradecimento especial à Andressa, Mahat e Vitória. Vocês são demais!</p></ag>
     </div>
 
     <script>
-        function abrirPopup(id) {
-        document.getElementById(id).style.display = 'block';
-    }
-    
-    function fecharPopup(id, callback) {
-        document.getElementById(id).style.display = 'none';
-        if (callback) callback();
-    }
-    
-    function abrirPopupPergunta() {
-        abrirPopup('popupPergunta');
-    }
-    
-    function abrirPopupCreditos() {
-        abrirPopup('popupCreditos');
-    }
-    
-    function verificarResposta() {
-        var resposta = document.getElementById("respostaData").value;
-        if (resposta === "30/12/2024") {
-            fecharPopup('popupPergunta', function() {
-                abrirPopup('popupRespostaCerta');
-            });
-        } else {
-            fecharPopup('popupPergunta', function() {
-                abrirPopup('popupRespostaErrada');
-            });
-        }
-    }
-        
         function createHearts() {
             const heartContainer = document.querySelector('.hearts');
             setInterval(() => {
@@ -445,7 +398,7 @@
             document.getElementById('popup').style.display = 'block';
         }
 
-        function fecharPopupp() {
+        function fecharPopup() {
             document.getElementById('popup').style.display = 'none';
             document.getElementById('creditos').style.display = 'block';
         }
