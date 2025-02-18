@@ -1,36 +1,77 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parabéns Princesa</title>
+    <title>Parabéns princesa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
         body {
-            background-color: black;
-            color: white;
+            margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
             text-align: center;
-            scroll-behavior: smooth;
-            margin: 0;
-            overflow-x: hidden;
-            position: relative;
+            background-color: black;
+            overflow: hidden;
         }
-        header {
+
+        .container {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: 'Dancing Script', cursive;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .active {
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .title {
+            font-size: 3rem;
+            font-family: 'Dancing Script', cursive;
+            text-shadow: 0 0 10px pink, 0 0 20px red;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: black;
-            padding: 10px 0;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 1000;
+            color: white;
         }
+
+        h1, p, t {
+            font-family: 'Dancing Script', cursive;
+        }
+
         h1 {
             font-size: 2.5em;
-            font-family: 'Dancing Script', cursive;
             text-shadow: 0 0 10px pink, 0 0 20px pink;
             animation: glow 1.5s infinite alternate;
         }
+
+        p {
+            font-size: 1.5em;
+        }
+
+        img {
+            max-width: 80%;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
         @keyframes glow {
             from {
                 text-shadow: 0 0 10px pink, 0 0 20px pink;
@@ -39,102 +80,64 @@
                 text-shadow: 0 0 20px red, 0 0 30px red;
             }
         }
-        nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            background: black;
-            padding: 10px;
-            gap: 10px;
+
+        .buttons {
+            margin-top: 20px;
+            position: absolute;
+            bottom: 60px;
         }
-        nav a {
-            color: pink;
-            text-decoration: none;
-            font-size: 1em;
-            padding: 10px;
-            border: 2px solid pink;
-            border-radius: 10px;
-            transition: 0.3s;
-        }
-        nav a:hover {
-            background-color: pink;
-            color: black;
-        }
-        #home {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-size: cover;
-            background-position: center;
-            padding: 20px;
-            flex-direction: column;
-        }
-        section {
-            padding: 80px 20px 50px;
-            min-height: 100vh;
-            scroll-margin-top: 140px;
-        }
-        audio {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            width: 200px;
-            z-index: 1000;
-        }
-        .parabens-container {
-            margin-top: 30px;
-        }
-        .parabens-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 1.5em;
+
+        button {
             background-color: pink;
             color: black;
             border: none;
-            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
             cursor: pointer;
-            transition: 0.3s;
-            animation: pulse 1.5s infinite;
+            border-radius: 10px;
+            margin: 5px;
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        .parabens-btn:hover {
+
+        button:hover {
             background-color: red;
             color: white;
         }
-        .modal {
-            display: none;
+
+        .popup {
             position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-        .modal-content {
-            background-color: pink;
-            color: black;
-            margin: 15% auto;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
             padding: 20px;
+            box-shadow: 0px 0px 10px red;
+            display: none;
+            z-index: 1000;
             border-radius: 10px;
-            width: 90%;
-            max-width: 400px;
+            color: black;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
             text-align: center;
-            font-size: 1.5em;
+            color: white;
+            font-size: 1rem;
+            font-family: 'Dancing Script', cursive;
         }
-        .close {
-            color: red;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .close:hover {
+
+        .creditos {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px red;
+            display: none;
+            z-index: 1000;
+            border-radius: 10px;
             color: black;
         }
         /* Fundo com corações */
@@ -159,7 +162,14 @@
             0% { transform: translateY(0); opacity: 1; }
             100% { transform: translateY(-100vh); opacity: 0; }
         }
-
+        
+        audio {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 200px;
+            z-index: 1000;
+        }
         .pause-btn {
             position: fixed;
             bottom: 20px;
@@ -184,59 +194,58 @@
 </head>
 <body>
     <div class="hearts"></div>
-    <header>
-        <h1>Parabéns Princesa</h1>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#inteligencia">Inteligência</a>
-            <a href="#beleza">Beleza</a>
-            <a href="#companheirismo">Companheirismo</a>
-        </nav>
-    </header>
-    
-    <section id="home">
-        <img src="https://png.pngtree.com/png-clipart/20221217/original/pngtree-sky-clouds-illustration-png-image_8760648.png" alt=""
-            style="max-width: 20%; border-radius: 20px; box-shadow: 0 0 20px pink;">
-    </section>       
-    
-    <audio id="musica" autoplay loop>
+    <audio autoplay loop>
         <source src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/Iframe%20Shawn%20Mendes%20-%20Kid%20In%20Love%20(Official%20Audio)%20%5BQiEz1GleIbs%5D.mp3" type="audio/mp3">
-        Seu navegador não suporta o elemento de áudio.
     </audio>
 
     <button class="pause-btn" onclick="toggleAudio()">⏸️</button>
     
-    <section id="inteligencia">
-        <h2>Inteligência</h2>
-        <p>Você tem uma mente brilhante e uma sabedoria incrível.</p>
-        <img src="https://via.placeholder.com/800x400?text=Imagem+Especial" alt="Imagem especial"
-            style="max-width: 80%; border-radius: 20px; box-shadow: 0 0 20px pink;">
-    </section>
-    <section id="beleza">
-        <h2>Beleza</h2>
-        <p>Você é simplesmente radiante.</p>
-        <img src="https://via.placeholder.com/800x400?text=Imagem+Especial" alt="Imagem especial"
-            style="max-width: 80%; border-radius: 20px; box-shadow: 0 0 20px pink;">
-    </section>
-    <section id="companheirismo">
-        <h2>Companheirismo</h2>
-        <p>Você sempre está ao lado de quem precisa.</p>
-        <img src="https://via.placeholder.com/800x400?text=Imagem+Especial" alt="Imagem especial"
-            style="max-width: 80%; border-radius: 20px; box-shadow: 0 0 20px pink;">
-        <div class="parabens-container">
-            <button class="parabens-btn" onclick="abrirModal()">Parabéns!</button>
-        </div>
-    </section>
+    <h1 class="title">Parabéns princesa</h1>
     
-    <div id="parabensModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="fecharModal()">&times;</span>
-            <p>Parabéns, minha princesa! 🎉❤️</p>
+    <div id="pagina1" class="container active">
+        <p>Você é a pessoa mais incrível que já conheci! ❤️</p>
+        <img src="imagem1.jpg" alt="Imagem 1">
+        <div class="buttons">
+            <button onclick="mudarPagina(2)">Próximo</button>
         </div>
     </div>
-    
-    <script>
-        function createHearts() {
+
+    <div id="pagina2" class="container">
+        <h1>Inteligente e maravilhosa!</h1>
+        <p>Seu brilho ilumina tudo ao seu redor! ✨</p>
+        <img src="imagem2.jpg" alt="Imagem 2">
+        <div class="buttons">
+            <button onclick="mudarPagina(1)">Anterior</button>
+            <button onclick="mudarPagina(3)">Próximo</button>
+        </div>
+    </div>
+
+    <div id="pagina3" class="container">
+        <h1>Parabéns!</h1>
+        <p>Espero que seu dia seja tão especial quanto você! 🎉</p>
+        <img src="imagem3.jpg" alt="Imagem 3">
+        <div class="buttons">
+            <button onclick="mudarPagina(2)">Anterior</button>
+            <button onclick="mostrarPopup()">Parabéns!</button>
+        </div>
+    </div>
+
+    <div id="popup" class="popup">
+        <h2>Parabéns, princesa! 🎂❤️</h2>
+        <p>Você merece tudo de melhor hoje e sempre!</p>
+        <button onclick="fecharPopup()">Fechar</button>
+    </div>
+
+    <div id="creditos" class="creditos">
+        <h2>Feito por alguém que te ama! ❤️</h2>
+        <button onclick="reiniciar()">Reiniciar</button>
+    </div>
+
+    <div class="footer">
+        <t class="timer">Tempo juntos: <span id="tempoJuntos"></span></t>
+    </div>
+
+    <script>function createHearts() {
             const heartContainer = document.querySelector('.hearts');
             setInterval(() => {
                 const heart = document.createElement('div');
@@ -250,19 +259,7 @@
             }, 500);
         }
         createHearts();
-        function abrirModal() {
-            document.getElementById("parabensModal").style.display = "block";
-        }
-        function fecharModal() {
-            document.getElementById("parabensModal").style.display = "none";
-        }
-        window.onclick = function(event) {
-            let modal = document.getElementById("parabensModal");
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }       
-
+      
         let audio = document.getElementById("musica");
 
         function iniciarAudio() {
@@ -282,6 +279,43 @@
                 audio.pause();
             }
         }
+        function mudarPagina(pagina) {
+            document.querySelectorAll('.container').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(`pagina${pagina}`).classList.add('active');
+        }
+
+        function mostrarPopup() {
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function fecharPopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('creditos').style.display = 'block';
+        }
+
+        function reiniciar() {
+            document.getElementById('creditos').style.display = 'none';
+            mudarPagina(1);
+        }
+
+        function atualizarTempo() {
+            const inicio = new Date('2024-11-30T15:24:00');
+            setInterval(() => {
+                const agora = new Date();
+                const diff = new Date(agora - inicio);
+                const anos = diff.getUTCFullYear() - 1970;
+                const meses = diff.getUTCMonth();
+                const dias = diff.getUTCDate() - 1;
+                const horas = diff.getUTCHours();
+                const minutos = diff.getUTCMinutes();
+                const segundos = diff.getUTCSeconds();
+                document.getElementById('tempoJuntos').textContent = `${anos} anos, ${meses} meses, ${dias} dias, ${horas}h ${minutos}m ${segundos}s`;
+            }, 1000);
+        }
+
+        atualizarTempo();
     </script>
 </body>
 </html>
