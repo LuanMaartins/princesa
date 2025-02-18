@@ -273,6 +273,11 @@
     </div>
 
     <script>
+        window.onload = function () {
+    const container = document.body;
+    const fireworks = new Fireworks.default(container);
+    fireworks.start();
+  };
         function createHearts() {
             const heartContainer = document.querySelector('.hearts');
             setInterval(() => {
