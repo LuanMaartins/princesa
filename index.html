@@ -228,7 +228,7 @@
             background-color: red;
             color: white;
         }
-        #cadeadoBotao {
+        .lock-btn {
             position: fixed;
             bottom: 10px;
             left: 10px;
@@ -242,28 +242,6 @@
             transition: 0.3s;
             animation: infinite;
             z-index: 1000; 
-        }
-        .cadeadoPopup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            z-index: 9999;
-        }
-        .cadeadoOverlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
         }
     </style>
 </head>
@@ -384,44 +362,41 @@
         <ag><p>Agradecimento especial à Andressa, Mahat e Vitória. Vocês são demais!</p></ag>
     </div>
     
-    <button id="cadeadoBotao">🔒</button>
+    <button class="lock-btn" onclick="openLockPopup()">🔒</button>
     
-    <div id="cadeadoOverlay" class="cadeadoOverlay"></div>
-    
-    <div id="cadeadoPopup" class="cadeadoPopup">
-        <p>Digite a resposta correta:</p>
-        <input type="text" id="cadeadoInput" placeholder="Digite aqui">
-        <br><br>
-        <button onclick="cadeadoVerificarResposta()">Confirmar</button>
+    <div id="lockPopup" class="popup">
+        <span class="close-btn" onclick="closeLockPopup()">&times;</span>
+        <p>Qual é o apelido carinhoso que eu te chamo?</p>
+        <input type="text" id="lockAnswer" placeholder="Digite sua resposta">
+        <button onclick="checkLockAnswer()">Confirmar</button>
     </div>
 
-    <div id="cadeadoPopupEspecial" class="cadeadoPopup">
-        <p>💖 Você é especial demais! 💖</p>
-        <button onclick="cadeadoFecharPopupEspecial()">Fechar</button>
+    <div id="messagePopup" class="popup">
+        <span class="close-btn" onclick="closeMessagePopup()">&times;</span>
+        <p>Você é a pessoa mais especial para mim! 💖</p>
     </div>
-
     <script>
-        let cadeadoRespostaCorreta = "01/01/2000";
+        function openLockPopup() {
+            document.getElementById("lockPopup").style.display = "block";
+        }
         
-        document.getElementById("cadeadoBotao").addEventListener("click", function() {
-            document.getElementById("cadeadoOverlay").style.display = "block";
-            document.getElementById("cadeadoPopup").style.display = "block";
-        });
+        function closeLockPopup() {
+            document.getElementById("lockPopup").style.display = "none";
+        }
         
-        function cadeadoVerificarResposta() {
-            let resposta = document.getElementById("cadeadoInput").value;
-            if (resposta === cadeadoRespostaCorreta) {
-                document.getElementById("cadeadoPopup").style.display = "none";
-                document.getElementById("cadeadoPopupEspecial").style.display = "block";
+        function checkLockAnswer() {
+            var answer = document.getElementById("lockAnswer").value.toLowerCase();
+            if (answer === "princesa") {
+                closeLockPopup();
+                document.getElementById("messagePopup").style.display = "block";
             } else {
                 alert("Você não é ela!");
                 window.close();
             }
         }
-        
-        function cadeadoFecharPopupEspecial() {
-            document.getElementById("cadeadoOverlay").style.display = "none";
-            document.getElementById("cadeadoPopupEspecial").style.display = "none";
+
+        function closeMessagePopup() {
+            document.getElementById("messagePopup").style.display = "none";
         }
         
         function createHearts() {
