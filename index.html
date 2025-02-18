@@ -367,7 +367,7 @@
     <div id="lockPopup" class="popup">
         <span class="close-btn" onclick="closeLockPopup()">&times;</span>
         <p>Quando foi o nosso primeiro beijo?</p>
-        <input type="text" id="lockAnswer" placeholder="__/__/____">
+        <input type="text" id="lockAnswer" placeholder="__/__/____" maxlength="10" oninput="applyDateMask(this)">
         <button onclick="checkLockAnswer()">Confirmar</button>
     </div>
 
@@ -376,6 +376,14 @@
         <p>Você é a pessoa mais especial para mim! 💖</p>
     </div>
     <script>
+        function applyDateMask(input) {
+            input.value = input.value
+                .replace(/\D/g, '') // Remove tudo que não é número
+                .replace(/^(\d{2})(\d)/, '$1/$2') // Adiciona a primeira barra
+                .replace(/^(\d{2})\/(\d{2})(\d)/, '$1/$2/$3') // Adiciona a segunda barra
+                .replace(/(\d{2})\/(\d{2})\/(\d{4}).*/, '$1/$2/$3'); // Garante que o formato final seja DD/MM/YYYY
+        }
+
         function openLockPopup() {
             document.getElementById("lockPopup").style.display = "block";
         }
