@@ -366,8 +366,8 @@
     
     <div id="lockPopup" class="popup">
         <span class="close-btn" onclick="closeLockPopup()">&times;</span>
-        <p>Qual é o apelido carinhoso que eu te chamo?</p>
-        <input type="text" id="lockAnswer" placeholder="Digite sua resposta">
+        <p>Quando foi o nosso primeiro beijo?</p>
+        <input type="text" id="lockAnswer" placeholder="__/__/____">
         <button onclick="checkLockAnswer()">Confirmar</button>
     </div>
 
@@ -382,11 +382,12 @@
         
         function closeLockPopup() {
             document.getElementById("lockPopup").style.display = "none";
+            document.getElementById("lockAnswer").value = "";
         }
         
         function checkLockAnswer() {
             var answer = document.getElementById("lockAnswer").value.toLowerCase();
-            if (answer === "princesa") {
+            if (answer === "30/11/2024") {
                 closeLockPopup();
                 document.getElementById("messagePopup").style.display = "block";
             } else {
