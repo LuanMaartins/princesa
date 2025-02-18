@@ -49,10 +49,11 @@
         }
 
         .title {
+    text-align: center;
             font-size: 3rem;
             font-family: 'Great Vibes', cursive;
             text-shadow: 0 0 10px pink, 0 0 20px red;
-            position: relative;
+            position: fixed;
             top: 10px;
             left: 50%;
             transform: translateX(-50%);
@@ -71,6 +72,12 @@
             font-size: 2.5em;
             text-shadow: 0 0 10px pink, 0 0 20px pink;
             animation: glow 1.5s infinite alternate;
+            font-size: 3rem; /* Ajuste conforme necessário */
+    font-family: 'Great Vibes', cursive;
+    white-space: normal; /* Permite quebra de linha */
+    word-wrap: break-word; /* Garante que o texto não ultrapasse os limites */
+    max-width: 90%; /* Para evitar ultrapassar a tela em telas menores */
+    margin: 0 auto;
         }
 
         t {
