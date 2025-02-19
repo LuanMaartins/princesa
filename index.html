@@ -139,18 +139,26 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-    /*width: 80%; /* Largura padrão 
-    max-width: 500px; /* Largura máxima 
-    max-height: 80vh; /* Altura máxima */
+    width: 80%; 
+    max-width: 500px;
+    max-height: 80vh; 
             background: #ffb6c1; 
             padding: 20px;
             box-shadow: 0px 0px 10px red;
             display: none;
             z-index: 1000;
             border-radius: 10px;
-    overflow-y: auto; /* Permite rolagem quando necessário */
+    /*overflow-y: auto; /* Permite rolagem quando necessário */
             color: black;
         } 
+
+        @media (max-width: 600px) {
+            .popup {
+                width: 85%;
+                max-height: 90vh;
+                padding: 15px;
+            }
+        }
         
         .popup2 {
             position: fixed;
