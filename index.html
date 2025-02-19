@@ -160,7 +160,7 @@
             border-radius: 10px;
             color: black;
         }   
-        .popup2 {
+        .popupcadeado {
             position: absolute;
             top: 8px;
             right: 12px;
@@ -396,14 +396,14 @@
     <button class="lock-btn" onclick="openLockPopup()">🔒</button>
     
     <div id="lockPopup" class="popup2">
-        <span class="close-btn" onclick="closeLockPopup()">✖</span>
+        <span class="popupcadeado" onclick="closeLockPopup()">✖</span>
         <p>Você é a Mônica? Se sim, quando foi o nosso primeiro beijo?</p>
         <input type="text" id="lockAnswer" placeholder="__/__/____" maxlength="10" oninput="applyDateMask(this)">
         <button onclick="checkLockAnswer()">Confirmar</button>
     </div>
 
     <div id="messagePopup" class="popup">
-        <span class="close-btn" onclick="closeMessagePopup()">✖</span>
+        <span class="popupcadeado" onclick="closeMessagePopup()">✖</span>
         <p>Você é a pessoa mais especial para mim! 💖</p>
     </div>
     <script>
