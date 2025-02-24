@@ -555,9 +555,9 @@
         }
 
         async function atualizarTempo() {
-            const inicio = new Date('2024-11-30T15:24:00');
+            const inicio = new Date('2024-11-30T15:24:00');            
+            const agora = await obterHorarioBrasilia();
             setInterval(() => {
-                const agora = await obterHorarioBrasilia();
                 const diff = new Date(agora - inicio);
                 const anos = diff.getUTCFullYear() - 1970;
                 const meses = diff.getUTCMonth();
@@ -584,7 +584,7 @@ async function obterHorarioBrasilia() {
 }
 
 async function verificarAcesso() {
-    const dataLiberacao = new Date('2025-02-24T13:46:00'); // Data alvo
+    const dataLiberacao = new Date('2025-02-24T13:47:30'); // Data alvo
     const agora = await obterHorarioBrasilia();
 
     if (agora >= dataLiberacao) {
