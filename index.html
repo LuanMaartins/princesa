@@ -554,7 +554,7 @@
             mudarPagina(1);
         }
 
-        function atualizarTempo() {
+        async function atualizarTempo() {
             const inicio = new Date('2024-11-30T15:24:00');
             setInterval(() => {
                 const agora = await obterHorarioBrasilia();
@@ -584,7 +584,7 @@ async function obterHorarioBrasilia() {
 }
 
 async function verificarAcesso() {
-    const dataLiberacao = new Date('2025-03-10T00:00:00'); // Data alvo
+    const dataLiberacao = new Date('2025-02-24T13:46:00'); // Data alvo
     const agora = await obterHorarioBrasilia();
 
     if (agora >= dataLiberacao) {
@@ -592,7 +592,7 @@ async function verificarAcesso() {
         document.getElementById('conteudoSite').style.display = "block"; // Exibe o site
     } else {
         setInterval(() => {
-            const diff = dataLiberacao - new Date();
+            const diff = dataLiberacao - agora;
 
             if (diff <= 0) {
                 location.reload(); // Atualiza a página quando chegar a data
