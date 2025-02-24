@@ -576,10 +576,6 @@ async function obterHorarioBrasilia() {
         const response = await fetch('https://timeapi.io/api/Time/current/zone?timeZone=America/Sao_Paulo');
         const data = await response.json();
 
-        if (!data.dateTime) {
-            throw new Error("Erro ao obter a hora oficial.");
-        }
-
         return new Date(data.dateTime); // Retorna a data/hora oficial de Brasília
     } catch (error) {
         console.error("Erro ao obter a hora de Brasília:", error);
@@ -588,24 +584,14 @@ async function obterHorarioBrasilia() {
 }
 
 async function verificarAcesso() {
-    const dataLiberacao = new Date('2025-02-24T13:33:00-03:00'); // Data alvo
-
+    const dataLiberacao = new Date('2025-02-24T13:37:30-03:00'); // Data alvo
     const agora = await obterHorarioBrasilia();
-
-    if (!agora) {
-        document.getElementById('tempoRestante').textContent = "Erro ao carregar horário.";
-        return;
-    }
 
     if (agora >= dataLiberacao) {
         document.getElementById('bloqueio').style.display = "none"; // Esconde a tela de bloqueio
         document.getElementById('conteudoSite').style.display = "block"; // Exibe o site
     } else {
-        setInterval(async () => {
-            const agora = await obterHorarioBrasilia();
-
-            if (!agora) return;
-
+        setInterval(() => {
             const diff = dataLiberacao - agora;
 
             if (diff <= 0) {
