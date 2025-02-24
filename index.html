@@ -555,9 +555,9 @@
         }
 
         async function atualizarTempo() {
-            const inicio = new Date('2024-11-30T15:24:00');            
-            const agora = new Date();
-            setInterval(() => {
+            const inicio = new Date('2024-11-30T15:24:00');  
+            setInterval(() => {          
+                const agora = new Date();
                 const diff = new Date(agora - inicio);
                 const anos = diff.getUTCFullYear() - 1970;
                 const meses = diff.getUTCMonth();
