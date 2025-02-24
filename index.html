@@ -583,8 +583,8 @@ async function obterHorarioBrasilia() {
     }
 }
 
-function verificarAcesso() {
-    const dataLiberacao = new Date('2025-02-24T13:37:30-03:00'); // Data alvo
+async function verificarAcesso() {
+    const dataLiberacao = new Date('2025-03-10T00:00:00'); // Data alvo
     const agora = await obterHorarioBrasilia();
 
     if (agora >= dataLiberacao) {
@@ -592,7 +592,7 @@ function verificarAcesso() {
         document.getElementById('conteudoSite').style.display = "block"; // Exibe o site
     } else {
         setInterval(() => {
-            const diff = dataLiberacao - agora;
+            const diff = dataLiberacao - new Date();
 
             if (diff <= 0) {
                 location.reload(); // Atualiza a página quando chegar a data
@@ -608,6 +608,8 @@ function verificarAcesso() {
         }, 1000);
     }
 }
+
+verificarAcesso();
 
 verificarAcesso();        
     </script>
