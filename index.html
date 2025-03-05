@@ -589,33 +589,43 @@
 
         atualizarTempo();        
 
-function verificarAcesso() {
-    const dataLiberacao = new Date('2025-03-10T00:00:00'); // Data alvo
-    const agora = new Date();
-
-    if (agora >= dataLiberacao) {
-        document.getElementById('bloqueio').style.display = "none"; // Esconde a tela de bloqueio
-        document.getElementById('conteudoSite').style.display = "block"; // Exibe o site
-    } else {
-        setInterval(() => {
-            const diff = dataLiberacao - new Date();
-
-            if (diff <= 0) {
-                location.reload(); // Atualiza a página quando chegar a data
-                return;
+        function verificarAcesso() {
+            const dataLiberacao = new Date('2025-03-10T00:00:00'); // Data alvo
+            const agora = new Date();
+        
+            if (agora >= dataLiberacao) {
+                document.getElementById('bloqueio').style.display = "none"; // Esconde a tela de bloqueio
+                document.getElementById('conteudoSite').style.display = "block"; // Exibe o site
+            } else {
+                setInterval(() => {
+                    const diff = dataLiberacao - new Date();
+        
+                    if (diff <= 0) {
+                        location.reload(); // Atualiza a página quando chegar a data
+                        return;
+                    }
+        
+                    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+        
+                    document.getElementById('tempoRestante').textContent = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+                }, 1000);
             }
+        }
+        
+        verificarAcesso();
 
-            const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const segundos = Math.floor((diff % (1000 * 60)) / 1000);
-
-            document.getElementById('tempoRestante').textContent = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
-        }, 1000);
-    }
-}
-
-verificarAcesso();
+        document.addEventListener("contextmenu", function(event) {
+          event.preventDefault();
+        });
+        
+        document.addEventListener("keydown", function(event) {
+          if (event.keyCode === 123) {
+            event.preventDefault();
+          }
+        });   
     </script>
 </body>
 </html>
