@@ -190,6 +190,14 @@
             font-size: 20px;
             color: red;
             font-weight: bold;
+        }        
+        .close-btn-footer {
+            bottom: 8px;
+            right: 12px;
+            cursor: pointer;
+            font-size: 20px;
+            color: red;
+            font-weight: bold;
         }
         .footer {
             position: fixed;
@@ -440,6 +448,7 @@
         <p>E, por mais que você tenha demorado oito anos para ceder aos meus encantos, cada segundo de espera valeu a pena!</p>
         <p><b>Parabéns pelo seu dia, minha princesa. Eu te amo!! ❤️</b></p>
         <span class="close-btn" onclick="fecharPopup()">✖</span>
+        <span class="close-btn-footer" onclick="fecharPopup()">✖</span>
     </div>
 
     <div id="creditos" class="creditos">
@@ -550,6 +559,7 @@
 
         function mostrarPopup() {
             document.getElementById('popup').style.display = 'block';
+            document.getElementById('popup').scrollTop = 0; 
         }
 
         function fecharPopup() {
