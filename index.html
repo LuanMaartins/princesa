@@ -598,7 +598,7 @@
                 document.getElementById('bloqueio').style.display = "none"; // Esconde a tela de bloqueio
                 document.getElementById('conteudoSite').style.display = "block"; // Exibe o site
             } else {
-                setInterval(() => {
+                setInterval(async() => {
                     const agora = await obterHorarioBrasilia();
                     const diff = dataLiberacao - agora;//new Date();
         
