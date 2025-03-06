@@ -637,10 +637,6 @@ async function sincronizarHorario() {
 
         console.log("Resposta da API:", data); // Log para depuração
 
-        if (!data || !data.year || !data.month || !data.day || !data.hour || !data.minute || !data.second) {
-            throw new Error("Resposta da API incompleta ou inválida");
-        }
-
         // Criando um objeto Date corretamente
         const horarioBrasilia = new Date(
             data.year, 
@@ -648,7 +644,7 @@ async function sincronizarHorario() {
             data.day, 
             data.hour, 
             data.minute, 
-            data.second
+            data.seconds || 0 // Algumas APIs podem não incluir "seconds"
         );
 
         if (isNaN(horarioBrasilia.getTime())) {
