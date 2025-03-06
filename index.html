@@ -604,40 +604,46 @@
             }
         }
 
-        let diferencaHorario = 0; 
-    
+        let diferencaHorario = 0; // Diferença entre o horário local e o de Brasília
+
         async function sincronizarHorario() {
             try {
                 const response = await fetch("https://www.timeapi.io/api/Time/current/zone?timeZone=America/Sao_Paulo");
                 const data = await response.json();
-                
+        
                 const horarioBrasilia = new Date(
                     data.year, 
-                    data.month - 1, 
+                    data.month - 1, // Mês no JavaScript começa do zero
                     data.day, 
                     data.hour, 
                     data.minute, 
                     data.seconds || 0
                 );
+        
+                if (isNaN(horarioBrasilia.getTime())) {
+                    throw new Error("Falha ao criar o objeto Date");
+                }
+        
+                // Pegando o horário local para calcular a diferença
                 const horarioLocal = new Date();
-                diferencaHorario = horarioBrasilia - horarioLocal; 
+                diferencaHorario = horarioBrasilia - horarioLocal; // Ajuste do tempo baseado no horário de Brasília
+        
             } catch (error) {
-                console.error("Erro ao obter o horário de Brasília. Usando horário do dispositivo.", error);
-                diferencaHorario = 0; 
+                diferencaHorario = 0; // Se a API falhar, usa o relógio do dispositivo sem ajustes
             }
         }
         
         async function verificarAcesso() {
-            await sincronizarHorario(); 
+            await sincronizarHorario(); // Ajusta a diferença antes de iniciar
         
-            const dataLiberacao = new Date('2025-03-06T00:17:48-03:00');
+            const dataLiberacao = new Date('2025-03-10T17:52:00-03:00'); // Data alvo fixa
         
             setInterval(() => {
-                const agora = new Date(new Date().getTime() + diferencaHorario); 
-                const diff = dataLiberacao - agora;
+                const agora = new Date(new Date().getTime() + diferencaHorario); // Ajusta a diferença no relógio local
+                const diff = dataLiberacao - agora; // Calcula o tempo restante
         
                 if (diff <= 0) {
-                    location.reload(); 
+                    location.reload(); // Atualiza a página quando chegar a data
                     return;
                 }
         
@@ -651,6 +657,7 @@
         }
         
         verificarAcesso();
+
 
         document.addEventListener("contextmenu", function(event) {
           event.preventDefault();
