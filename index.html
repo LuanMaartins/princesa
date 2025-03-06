@@ -636,14 +636,15 @@
         async function verificarAcesso() {
             await sincronizarHorario(); // Ajusta a diferença antes de iniciar
         
-            const dataLiberacao = new Date('2025-03-06T17:53:00-03:00'); // Data alvo fixa
+            const dataLiberacao = new Date('2025-03-06T17:57:00-03:00'); // Data alvo fixa
         
-            setInterval(() => {
+            const intervalo = setInterval(() => {
                 const agora = new Date(new Date().getTime() + diferencaHorario); // Ajusta a diferença no relógio local
                 const diff = dataLiberacao - agora; // Calcula o tempo restante
         
                 if (diff <= 0) {
                     location.reload(); // Atualiza a página quando chegar a data
+                    clearInterval(intervalo);
                     return;
                 }
         
