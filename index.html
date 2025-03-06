@@ -589,18 +589,16 @@
 
         atualizarTempo();        
 
-        async function verificarAcesso() {
+        /*function verificarAcesso() {
             const dataLiberacao = new Date('2025-03-10T00:00:00'); // Data alvo
-            //const agora = new Date();
-            const agora = await obterHorarioBrasilia();
+            const agora = new Date();
         
             if (agora >= dataLiberacao) {
                 document.getElementById('bloqueio').style.display = "none"; // Esconde a tela de bloqueio
                 document.getElementById('conteudoSite').style.display = "block"; // Exibe o site
             } else {
-                setInterval(async() => {
-                    const agora = await obterHorarioBrasilia();
-                    const diff = dataLiberacao - agora;//new Date();
+                setInterval(() => {
+                    const diff = dataLiberacao - new Date();
         
                     if (diff <= 0) {
                         location.reload(); // Atualiza a página quando chegar a data
@@ -617,18 +615,58 @@
             }
         }
         
-        verificarAcesso();
+        verificarAcesso();*/
 
         async function obterHorarioBrasilia() {
             try {
-                const response = await fetch("http://worldtimeapi.org/api/timezone/America/Sao_Paulo");
+                const response = await fetch("https://www.timeapi.io/api/Time/current/zone?timeZone=America/Sao_Paulo");
                 const data = await response.json();
-                return new Date(data.datetime); // Retorna a data/hora exata de Brasília
+                return new Date(`${data.date}T${data.time}-03:00`); // Converte para um objeto Date
             } catch (error) {
                 console.error("Erro ao obter o horário de Brasília:", error);
                 return new Date(); // Fallback para o horário local
             }
         }
+
+        let diferencaHorario = 0; // Diferença inicial em milissegundos
+
+        async function sincronizarHorario() {
+            try {
+                const response = await fetch("https://www.timeapi.io/api/Time/current/zone?timeZone=America/Sao_Paulo");
+                const data = await response.json();
+                const horarioBrasilia = new Date(`${data.date}T${data.time}-03:00`);
+                const horarioLocal = new Date();
+                diferencaHorario = horarioBrasilia - horarioLocal;
+            } catch (error) {
+                console.error("Erro ao obter o horário de Brasília:", error);
+            }
+        }
+        
+        async function verificarAcesso() {
+            await sincronizarHorario(); // Ajusta a diferença antes de iniciar
+        
+            const dataLiberacao = new Date('2025-03-10T00:00:00-03:00');
+        
+            setInterval(() => {
+                const agora = new Date(new Date().getTime() + diferencaHorario); // Ajusta a diferença no relógio local
+                const diff = dataLiberacao - agora;
+        
+                if (diff <= 0) {
+                    location.reload(); // Atualiza a página quando chegar a data
+                    return;
+                }
+        
+                const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+        
+                document.getElementById('tempoRestante').textContent = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+            }, 1000);
+        }
+        
+        verificarAcesso();
+
 
         document.addEventListener("contextmenu", function(event) {
           event.preventDefault();
