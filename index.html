@@ -591,14 +591,16 @@
 
         function verificarAcesso() {
             const dataLiberacao = new Date('2025-03-10T00:00:00'); // Data alvo
-            const agora = new Date();
+            //const agora = new Date();
+            const agora = await obterHorarioBrasilia();
         
             if (agora >= dataLiberacao) {
                 document.getElementById('bloqueio').style.display = "none"; // Esconde a tela de bloqueio
                 document.getElementById('conteudoSite').style.display = "block"; // Exibe o site
             } else {
                 setInterval(() => {
-                    const diff = dataLiberacao - new Date();
+                    const agora = await obterHorarioBrasilia();
+                    const diff = dataLiberacao - agora;//new Date();
         
                     if (diff <= 0) {
                         location.reload(); // Atualiza a página quando chegar a data
@@ -616,6 +618,17 @@
         }
         
         verificarAcesso();
+
+        async function obterHorarioBrasilia() {
+            try {
+                const response = await fetch("http://worldtimeapi.org/api/timezone/America/Sao_Paulo");
+                const data = await response.json();
+                return new Date(data.datetime); // Retorna a data/hora exata de Brasília
+            } catch (error) {
+                console.error("Erro ao obter o horário de Brasília:", error);
+                return new Date(); // Fallback para o horário local
+            }
+        }
 
         document.addEventListener("contextmenu", function(event) {
           event.preventDefault();
