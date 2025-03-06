@@ -573,118 +573,84 @@
         }
 
         async function atualizarTempo() {
-            const inicio = new Date('2024-11-30T15:24:00');  
-            setInterval(() => {          
-                const agora = new Date();
+            await sincronizarHorario(); // Ajusta a diferença antes de iniciar
+        
+            const inicio = new Date('2024-11-30T15:24:00-03:00'); // Data fixa do início
+        
+            setInterval(() => {
+                const agora = new Date(new Date().getTime() + diferencaHorario); // Ajusta para horário de Brasília
                 const diff = new Date(agora - inicio);
+        
                 const anos = diff.getUTCFullYear() - 1970;
                 const meses = diff.getUTCMonth();
                 const dias = diff.getUTCDate() - 1;
                 const horas = diff.getUTCHours();
                 const minutos = diff.getUTCMinutes();
                 const segundos = diff.getUTCSeconds();
+        
                 document.getElementById('tempoJuntos').textContent = `${anos} anos, ${meses} meses, ${dias} dias, ${horas}h ${minutos}m ${segundos}s`;
             }, 1000);
         }
-
-        atualizarTempo();        
-
-        /*function verificarAcesso() {
-            const dataLiberacao = new Date('2025-03-10T00:00:00'); // Data alvo
-            const agora = new Date();
         
-            if (agora >= dataLiberacao) {
-                document.getElementById('bloqueio').style.display = "none"; // Esconde a tela de bloqueio
-                document.getElementById('conteudoSite').style.display = "block"; // Exibe o site
-            } else {
-                setInterval(() => {
-                    const diff = dataLiberacao - new Date();
+        atualizarTempo();      
         
-                    if (diff <= 0) {
-                        location.reload(); // Atualiza a página quando chegar a data
-                        return;
-                    }
-        
-                    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    const segundos = Math.floor((diff % (1000 * 60)) / 1000);
-        
-                    document.getElementById('tempoRestante').textContent = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
-                }, 1000);
-            }
-        }
-        
-        verificarAcesso();*/
-
         async function obterHorarioBrasilia() {
             try {
                 const response = await fetch("https://www.timeapi.io/api/Time/current/zone?timeZone=America/Sao_Paulo");
                 const data = await response.json();
-                return new Date(`${data.date}T${data.time}-03:00`); // Converte para um objeto Date
+                return new Date(`${data.date}T${data.time}-03:00`);
             } catch (error) {
-                console.error("Erro ao obter o horário de Brasília:", error);
-                return new Date(); // Fallback para o horário local
+                return new Date(); 
             }
         }
 
-    let diferencaHorario = 0; // Diferença entre o horário local e o de Brasília
-
-    async function sincronizarHorario() {
-        try {
-            const response = await fetch("https://www.timeapi.io/api/Time/current/zone?timeZone=America/Sao_Paulo");
-            const data = await response.json();
+        let diferencaHorario = 0; 
     
-            console.log("Resposta da API:", data); // Log para depuração
-    
-            const horarioBrasilia = new Date(
-                data.year, 
-                data.month - 1, // Mês no JavaScript começa do zero
-                data.day, 
-                data.hour, 
-                data.minute, 
-                data.seconds || 0
-            );
-    
-            if (isNaN(horarioBrasilia.getTime())) {
-                throw new Error("Falha ao criar o objeto Date");
+        async function sincronizarHorario() {
+            try {
+                const response = await fetch("https://www.timeapi.io/api/Time/current/zone?timeZone=America/Sao_Paulo");
+                const data = await response.json();
+                
+                const horarioBrasilia = new Date(
+                    data.year, 
+                    data.month - 1, 
+                    data.day, 
+                    data.hour, 
+                    data.minute, 
+                    data.seconds || 0
+                );
+                const horarioLocal = new Date();
+                diferencaHorario = horarioBrasilia - horarioLocal; 
+            } catch (error) {
+                console.error("Erro ao obter o horário de Brasília. Usando horário do dispositivo.", error);
+                diferencaHorario = 0; 
             }
-    
-            // Pegando o horário local para calcular a diferença
-            const horarioLocal = new Date();
-            diferencaHorario = horarioBrasilia - horarioLocal; // Ajuste do tempo baseado no horário de Brasília
-    
-            console.log("Horário de Brasília sincronizado:", horarioBrasilia);
-        } catch (error) {
-            console.error("Erro ao obter o horário de Brasília. Usando horário do dispositivo.", error);
-            diferencaHorario = 0; // Se a API falhar, usa o relógio do dispositivo sem ajustes
         }
-    }
-    
-    async function verificarAcesso() {
-        await sincronizarHorario(); // Ajusta a diferença antes de iniciar
-    
-        const dataLiberacao = new Date('2025-03-10T00:00:00-03:00'); // Data alvo fixa
-    
-        setInterval(() => {
-            const agora = new Date(new Date().getTime() + diferencaHorario); // Ajusta a diferença no relógio local
-            const diff = dataLiberacao - agora; // Calcula o tempo restante
-    
-            if (diff <= 0) {
-                location.reload(); // Atualiza a página quando chegar a data
-                return;
-            }
-    
-            const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const segundos = Math.floor((diff % (1000 * 60)) / 1000);
-    
-            document.getElementById('tempoRestante').textContent = `Faltam: ${dias}d ${horas}h ${minutos}m ${segundos}s`;
-        }, 1000);
-    }
-    
-    verificarAcesso();
+        
+        async function verificarAcesso() {
+            await sincronizarHorario(); 
+        
+            const dataLiberacao = new Date('2025-03-06T00:17:48-03:00');
+        
+            setInterval(() => {
+                const agora = new Date(new Date().getTime() + diferencaHorario); 
+                const diff = dataLiberacao - agora;
+        
+                if (diff <= 0) {
+                    location.reload(); 
+                    return;
+                }
+        
+                const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+        
+                document.getElementById('tempoRestante').textContent = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+            }, 1000);
+        }
+        
+        verificarAcesso();
 
         document.addEventListener("contextmenu", function(event) {
           event.preventDefault();
