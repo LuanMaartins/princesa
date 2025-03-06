@@ -636,7 +636,7 @@
         async function verificarAcesso() {
             await sincronizarHorario(); // Ajusta a diferença antes de iniciar
         
-            const dataLiberacao = new Date('2025-03-06T18:05:00-03:00'); // Data alvo fixa
+            const dataLiberacao = new Date('2025-03-10T00:00:00-03:00'); // Data alvo fixa
             const agora = new Date(new Date().getTime() + diferencaHorario); // Ajusta a diferença no relógio local
 
             if (agora >= dataLiberacao) {
