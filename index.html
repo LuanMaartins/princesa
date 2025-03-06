@@ -635,8 +635,15 @@ async function sincronizarHorario() {
         const response = await fetch("https://www.timeapi.io/api/Time/current/zone?timeZone=America/Sao_Paulo");
         const data = await response.json();
 
-        // Criando um objeto de data corretamente formatado
-        const horarioBrasilia = new Date(`${data.year}-${String(data.month).padStart(2, '0')}-${String(data.day).padStart(2, '0')}T${String(data.hour).padStart(2, '0')}:${String(data.minute).padStart(2, '0')}:${String(data.second).padStart(2, '0')}-03:00`);
+        // Criando um objeto Date a partir dos dados da API
+        const horarioBrasilia = new Date(
+            data.year, 
+            data.month - 1, // Mês no JavaScript começa do zero
+            data.day, 
+            data.hour, 
+            data.minute, 
+            data.second
+        );
 
         // Pegando o horário local para calcular a diferença
         const horarioLocal = new Date();
@@ -667,7 +674,7 @@ async function verificarAcesso() {
         const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const segundos = Math.floor((diff % (1000 * 60)) / 1000);
 
-        document.getElementById('tempoRestante').textContent = `Faltam: ${dias}d ${horas}h ${minutos}m ${segundos}s`;
+        document.getElementById('tempoRestante').textContent = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
     }, 1000);
 }
 
