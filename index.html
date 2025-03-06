@@ -589,7 +589,7 @@
 
         atualizarTempo();        
 
-        function verificarAcesso() {
+        async function verificarAcesso() {
             const dataLiberacao = new Date('2025-03-10T00:00:00'); // Data alvo
             //const agora = new Date();
             const agora = await obterHorarioBrasilia();
@@ -617,7 +617,7 @@
             }
         }
         
-        verificarAcesso();
+        await verificarAcesso();
 
         async function obterHorarioBrasilia() {
             try {
