@@ -637,24 +637,29 @@
             await sincronizarHorario(); // Ajusta a diferença antes de iniciar
         
             const dataLiberacao = new Date('2025-03-06T17:57:00-03:00'); // Data alvo fixa
-        
-            const intervalo = setInterval(() => {
-                const agora = new Date(new Date().getTime() + diferencaHorario); // Ajusta a diferença no relógio local
-                const diff = dataLiberacao - agora; // Calcula o tempo restante
-        
-                if (diff <= 0) {
-                    location.reload(); // Atualiza a página quando chegar a data
-                    clearInterval(intervalo);
-                    return;
-                }
-        
-                const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const segundos = Math.floor((diff % (1000 * 60)) / 1000);
-        
-                document.getElementById('tempoRestante').textContent = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
-            }, 1000);
+            const agora = new Date(new Date().getTime() + diferencaHorario); // Ajusta a diferença no relógio local
+
+            if (agora >= dataLiberacao) {
+                document.getElementById('bloqueio').style.display = "none"; // Esconde a tela de bloqueio
+                document.getElementById('conteudoSite').style.display = "block"; // Exibe o conteúdo do site
+            } else {    
+                setInterval(() => {
+                    const agora = new Date(new Date().getTime() + diferencaHorario); // Ajusta a diferença no relógio local
+                    const diff = dataLiberacao - agora; // Calcula o tempo restante
+            
+                    if (diff <= 0) {
+                        location.reload(); // Atualiza a página quando chegar a data
+                        return;
+                    }
+            
+                    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+            
+                    document.getElementById('tempoRestante').textContent = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+                }, 1000);
+            }
         }
         
         verificarAcesso();
