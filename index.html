@@ -628,18 +628,21 @@
             }
         }
 
-        let diferencaHorario = 0; // Diferença entre o horário do usuário e o de Brasília
+let diferencaHorario = 0; // Diferença entre o horário local e o de Brasília
 
 async function sincronizarHorario() {
     try {
         const response = await fetch("https://www.timeapi.io/api/Time/current/zone?timeZone=America/Sao_Paulo");
         const data = await response.json();
 
-        // Corrigindo a conversão da data/hora corretamente
-        const horarioBrasilia = new Date(`${data.year}-${data.month.toString().padStart(2, '0')}-${data.day.toString().padStart(2, '0')}T${data.hour.toString().padStart(2, '0')}:${data.minute.toString().padStart(2, '0')}:${data.second.toString().padStart(2, '0')}-03:00`);
+        // Criando um objeto de data corretamente formatado
+        const horarioBrasilia = new Date(`${data.year}-${String(data.month).padStart(2, '0')}-${String(data.day).padStart(2, '0')}T${String(data.hour).padStart(2, '0')}:${String(data.minute).padStart(2, '0')}:${String(data.second).padStart(2, '0')}-03:00`);
 
+        // Pegando o horário local para calcular a diferença
         const horarioLocal = new Date();
-        diferencaHorario = horarioBrasilia - horarioLocal;
+        diferencaHorario = horarioBrasilia - horarioLocal; // Ajuste do tempo baseado no horário de Brasília
+
+        console.log("Horário de Brasília sincronizado:", horarioBrasilia);
     } catch (error) {
         console.error("Erro ao obter o horário de Brasília:", error);
     }
@@ -648,11 +651,11 @@ async function sincronizarHorario() {
 async function verificarAcesso() {
     await sincronizarHorario(); // Ajusta a diferença antes de iniciar
 
-    const dataLiberacao = new Date('2025-03-10T00:00:00-03:00');
+    const dataLiberacao = new Date('2025-03-10T00:00:00-03:00'); // Data alvo fixa
 
     setInterval(() => {
         const agora = new Date(new Date().getTime() + diferencaHorario); // Ajusta a diferença no relógio local
-        const diff = dataLiberacao - agora;
+        const diff = dataLiberacao - agora; // Calcula o tempo restante
 
         if (diff <= 0) {
             location.reload(); // Atualiza a página quando chegar a data
