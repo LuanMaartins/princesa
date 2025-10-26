@@ -299,12 +299,12 @@ body {
     display: flex;
     flex-direction: column; /* empilha os botões */
     align-items: center;
-    gap: 10px; /* espaço entre os botões */
-    margin-bottom: 20px;
+    gap: 15px; /* espaço entre os botões */
+    margin: 20px 0;
 }
 
 .submenu-btn {
-    display: block; /* garante que cada botão ocupe a linha inteira */
+    display: block; /* garante botão em linha própria */
     width: 250px;
     text-align: center;
     background-color: pink;

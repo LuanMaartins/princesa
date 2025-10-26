@@ -195,19 +195,27 @@ function applyDateMask(input) {
           }
         });   
 		
-function carregarConteudo(url, btn) {
-    // Marca o botão como ativo
-    document.querySelectorAll('.submenu-container .buttons').forEach(b => b.classList.remove('ativo'));
-    btn.classList.add('ativo');
+function carregarConteudo(pagina, botao) {
+    // Remove a classe ativo de todos os botões
+    document.querySelectorAll('.submenu-btn').forEach(b => b.classList.remove('ativo'));
+    
+    // Adiciona classe ativo no botão clicado
+    botao.classList.add('ativo');
 
-    fetch(url) // ❗ precisa estar em um servidor HTTP, não funciona com file://
-        .then(response => response.text())
+    // Pega o container do conteúdo
+    const container = document.getElementById('conteudo-subpagina');
+
+    // Faz o fetch do HTML da subpágina
+    fetch(pagina)
+        .then(response => {
+            if (!response.ok) throw new Error('Não foi possível carregar a página.');
+            return response.text();
+        })
         .then(html => {
-            document.getElementById('conteudo-subpagina').innerHTML = html;
+            container.innerHTML = html; // insere o conteúdo
         })
         .catch(err => {
-            console.error("Erro ao carregar conteúdo:", err);
-            document.getElementById('conteudo-subpagina').innerHTML = `<p style="color:red;">Falha ao carregar a página. Use um servidor HTTP.</p>`;
+            container.innerHTML = `<p style="color:red;">Erro ao carregar a página: ${err.message}</p>`;
         });
 }
 
