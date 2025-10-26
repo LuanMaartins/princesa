@@ -297,15 +297,15 @@ body {
 
 .submenu-container {
     display: flex;
-    flex-direction: column; /* empilha os botões */
+    flex-direction: column;
     align-items: center;
-    gap: 15px; /* espaço entre os botões */
+    gap: 20px;
     margin: 20px 0;
 }
 
 .submenu-btn {
     display: block; /* garante botão em linha própria */
-    width: 250px;
+    width: 300px;
     text-align: center;
     background-color: pink;
     color: black;
