@@ -230,4 +230,7 @@ function carregarConteudo(pagina, botao) {
                 behavior: 'smooth'
             });    
         }
+function irParaPagina(paginaHTML) {
+    window.location.href = paginaHTML;
+}
 
