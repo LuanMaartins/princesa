@@ -297,12 +297,34 @@ body {
 
 .submenu-container {
     display: flex;
-    flex-direction: column; /* botões empilhados */
+    flex-direction: column; /* empilha os botões */
     align-items: center;
     gap: 10px; /* espaço entre os botões */
     margin-bottom: 20px;
 }
 
+.submenu-btn {
+    display: block; /* garante que cada botão ocupe a linha inteira */
+    width: 250px;
+    text-align: center;
+    background-color: pink;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-family: 'Raleway', sans-serif;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.submenu-btn:hover {
+    background-color: red;
+    color: white;
+}
+
+.submenu-btn.ativo {
+    box-shadow: 0 0 10px pink;
+}
 
 /* Área de conteúdo da subpágina */
 .conteudo-subpagina {
