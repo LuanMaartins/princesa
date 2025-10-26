@@ -289,18 +289,20 @@ body {
         }
 
 #submenu {
-    margin-top: 200px; /* dá espaço para a parte fixa no topo */
+    margin-top: 200px; /* espaço abaixo da parte fixa */
     position: relative;
     z-index: 0;
+    text-align: center;
 }
 
 .submenu-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* botões empilhados */
+    align-items: center;
+    gap: 10px; /* espaço entre os botões */
+    margin-bottom: 20px;
 }
+
 
 /* Área de conteúdo da subpágina */
 .conteudo-subpagina {
