@@ -302,27 +302,6 @@ body {
   margin-bottom: 20px;
 }
 
-.submenu-btn {
-  background-color: transparent;
-  border: 2px solid #fff;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 1em;
-}
-
-.submenu-btn:hover {
-  background-color: #fff;
-  color: #ff5f8f;
-}
-
-.submenu-btn.ativo {
-  background-color: #ff5f8f;
-  color: #fff;
-}
-
 .conteudo-subpagina {
   opacity: 1;
   transition: opacity 0.3s ease;
