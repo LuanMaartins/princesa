@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parabéns princesa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet"> 
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: black;
+            overflow: auto;
+        }
+
+        html, body {
+            height: 100%;
+            overflow-y: auto; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth; 
+            touch-action: manipulation; 
+        }
+
+        .container {
+            position: absolute;
+            width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: 'Great Vibes', cursive;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            padding-top: 100px;
+        }
+
+        .active {
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 3rem;
+            font-family: 'Great Vibes', cursive;
+            text-shadow: 0 0 10px pink, 0 0 20px red;
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            color: white;
+            background-color: black;
+            padding: 5px;
+            width: 100%;
+        }
+
+        h1, t {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-shadow: 0 0 10px pink, 0 0 20px pink;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        t {
+            font-size: 1.5em;
+        }
+
+        ag {
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.5em;
+            font-weight: bold;
+        }
+        
+        p, h2 {
+            font-family: 'Raleway', sans-serif;
+            font-size: 1.2em;
+            max-width: 70vw;
+            margin: 0 auto; 
+            justify-content: center;
+            word-wrap: break-word; 
+        }
+
+
+        img {
+            max-width: 50vw;
+            max-height: 50vh;
+            width: auto;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px pink;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px pink, 0 0 20px pink;
+            }
+            to {
+                text-shadow: 0 0 20px red, 0 0 30px red;
+            }
+        }
+
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        button {
+            background-color: pink;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            font-family: 'Raleway', sans-serif;
+            cursor: pointer;
+            border-radius: 10px;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: red;
+            color: white;
+        }
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%; 
+            max-width: 500px;
+            max-height: 80vh; 
+            background: #ffb6c1; 
+            padding: 20px;
+            box-shadow: 0px 0px 10px red;
+            display: none;
+            z-index: 1000;
+            border-radius: 10px;
+            overflow-y: auto; 
+            color: black;
+        } 
+
+        @media (max-width: 600px) {
+            .popup {
+                width: 85%;
+                max-height: 85vh;
+                padding: 15px;
+            }
+        }
+        
+        .popup2 {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white; 
+            padding: 20px;
+            box-shadow: 0px 0px 10px red;
+            display: none;
+            z-index: 1000;
+            border-radius: 10px;
+            color: black;
+        }   
+        .popupcadeado {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            cursor: pointer;
+            font-size: 15px;
+            color: red;
+            font-weight: bold;
+        }
+        .popup .close-btn {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            cursor: pointer;
+            font-size: 20px;
+            color: red;
+            font-weight: bold;
+        }        
+        .close-btn-footer {
+            bottom: 8px;
+            right: 12px;
+            cursor: pointer;
+            font-size: 20px;
+            color: red;
+            font-weight: bold;
+        }
+        .footer {
+            position: fixed;
+            top: 10px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 1rem;
+            font-family: 'Great Vibes', cursive;
+            background-color: black;
+        }
+
+        .creditos {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px red;
+            display: none;
+            z-index: 1000;
+            border-radius: 10px;
+            color: black;
+        }
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .heart {
+            position: absolute;
+            bottom: -10px;
+            color: pink;
+            font-size: 20px;
+            opacity: 0.7;
+            animation: float 5s linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+        
+        audio {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 200px;
+            z-index: 1000;
+        }
+        .pause-btn {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            font-size: 1em;
+            background-color: pink;
+            color: black;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            animation: infinite;
+            z-index: 1000; 
+        }
+        
+        .pause-btn:hover {
+            background-color: red;
+            color: white;
+        }
+        .lock-btn {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            padding: 5px 10px;
+            font-size: 1em;
+            background-color: pink;
+            color: black;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            animation: infinite;
+            z-index: 1000; 
+        }
+        #lockAnswer {
+            font-family: 'Raleway', sans-serif;
+            font-size: 14px;
+            width: 90px;
+            text-align: center;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+<div id="bloqueio" style="
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    text-align: center;
+    z-index: 9999;
+">
+    <div class="hearts"></div>
+    
+    <h1 class="title">Calma apressada!!</h1>
+    
+    <div id="pagina1" class="container active">
+        <h1>
+        <br class="timer">Faltam: <span id="tempoRestante"></span></br>
+        </h1>
+    </div>
+
+</div>
+
+    
+
+<div id="conteudoSite" style="display: none;">        
+     
+    <div class="hearts"></div>
+    
+    <audio id="musica" autoplay loop>
+        <source src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/Iframe%20Shawn%20Mendes%20-%20Kid%20In%20Love%20(Official%20Audio)%20%5BQiEz1GleIbs%5D.mp3" type="audio/mp3">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <button class="pause-btn" onclick="toggleAudio()">⏸️</button>
+
+    <div class="title">
+         <div class="footer">
+            <t class="timer">Tempo juntos: <span id="tempoJuntos"></span></t>
+        </div>
+        <h1 class="title">Parabéns princesa</h1>
+    </div>
+    
+    <div id="pagina1" class="container active">
+        <h1></h1>
+        <p>Amor, no dia de hoje, quero destacar o quão especial e importante você é para todos que têm o prazer e a felicidade de conviver ao seu lado!</p>
+        <p>Espero que você goste!❤️</p>
+        <img src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/Polish_20250218_140355914.jpg" alt=""
+            style="max-width: 50%; border-radius: 20px; box-shadow: 0 0 20px pink;">
+        <div class="buttons">
+            <button onclick="mudarPagina(2)">Próximo</button>
+        </div>
+    </div>
+
+    <div id="pagina2" class="container">
+        <h1>Especial!</h1>
+        <p>Você é a pessoa mais especial do mundo, dona do meu coração. A mulher sensacional que consegue transformar todos os momentos em momentos únicos, que tem me feito tão bem simplesmente por ser você. Você consegue mudar o meu dia apenas com uma mensagem, me deixando como um bobo, olhando para o celular e sorrindo. Cada encontro, cada saída, desde uma ida à academia até andar de mãos dadas pelo shopping, te encher de beijinhos ou simplesmente te admirar, é maravilhoso, porque estar com você é o que torna o meu dia especial!</p>
+        <img src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/IMG-20161221-WA0005.jpg" alt=""
+            style="max-width: 50%; border-radius: 20px; box-shadow: 0 0 20px pink;">
+        <div class="buttons">
+            <button onclick="mudarPagina(1)">Anterior</button>
+            <button onclick="mudarPagina(3)">Próximo</button>
+        </div>
+    </div>
+
+    <div id="pagina3" class="container">
+        <h1>Inteligente!</h1>
+        <p>A sua inteligência sempre foi capaz de levar você a lugares que nunca imaginou. Por mais que seja meio doidinha e ache que não, você é capaz de tudo neste mundo. Mesmo com medo e preocupada, sempre entrega o seu melhor e acaba se surpreendendo com o resultado, pois é assim que você é. Essa é você: uma mulher inteligente, foda pra caralho, que tudo o que se propõe a fazer, se joga de cabeça, e o resultado é sempre maravilhoso!</p>
+        <img src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/Polish_20250218_165627399.jpg" alt=""
+            style="max-width: 50%; border-radius: 20px; box-shadow: 0 0 20px pink;">
+        <div class="buttons">
+            <button onclick="mudarPagina(2)">Anterior</button>
+            <button onclick="mudarPagina(4)">Próximo</button>
+        </div>
+    </div>
+
+    <div id="pagina4" class="container">
+        <h1>Forte!</h1>
+        <p>Não podia falar de você sem mencionar a força que você tem. E não falo apenas de força de vontade, mas da sua força em tudo o que faz. Sabemos que nem sempre as coisas acontecem como queremos, surgem desafios no trabalho, em casa, na vida. Mas você está sempre ali, firme e determinada, pronta para resolver, para dar um jeito.</p>
+        <p>Se for preciso virar madureira de cabeça para baixo para encontrar algo ou resolver algo, você faz. Se precisar ficar até o dia seguinte no trabalho, você estará lá, sem hesitar. E, mesmo quando tentam te abalar ou te testar, em muitos momentos kkkkk, você se mantém firme, sem se deixar afetar. Você encara tudo de frente, sempre focada, sempre dando o seu melhor.</p>
+        <p>Porque essa é você: forte, determinada e incansável!</p>
+        <img src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/20170720_153649.jpg" alt=""
+            style="max-width: 50%; border-radius: 20px; box-shadow: 0 0 20px pink;">
+        <div class="buttons">
+            <button onclick="mudarPagina(3)">Anterior</button>
+            <button onclick="mudarPagina(5)">Próximo</button>
+        </div>
+    </div>
+
+    <div id="pagina5" class="container">
+        <h1>Linda!</h1>
+        <p>Essa foto representa bem essa parte e tudo o que eu sempre digo: o sorriso tímido, mais lindo de todos, que me encanta cada dia mais. Essa mulher maravilhosa, que me fascina mais a cada dia, a cada momento que passamos juntos, fazendo com que eu me apaixone ainda mais todos os dias, por cada detalhe, cada sorriso, cada olhar. Você é a mais linda de todas, amor, com esse cabelão que vive querendo cortar, com esse rostinho lindo que eu não canso de olhar. Fico abobalhado, como você mesma disse, admirando cada detalhe e só agradecendo por ter essa mulher incrível pertinho de mim!</p>
+        <img src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/Screenshot_20250218_121926_Instagram.jpg" alt=""
+            style="max-width: 50%; border-radius: 20px; box-shadow: 0 0 20px pink;">
+        <div class="buttons">
+            <button onclick="mudarPagina(4)">Anterior</button>
+            <button onclick="mudarPagina(6)">Próximo</button>
+        </div>
+    </div>
+
+    <div id="pagina6" class="container">
+        <h1>Companheira!</h1>
+        <p>O que dizer sobre essa mulher? Como colocar em palavras a pessoa incrível que você é? Tudo o que faz com que eu e todos que têm a honra de te ter na vida se sintam tão bem por estarem perto de você. Cada dia e cada momento ao seu lado é especial, pela amiga que você é, pela sua companhia, por simplesmente ter você na vida e saber que sempre haverá alguém em quem confiar, independentemente da situação.</p>
+        <p>E disso eu sei bem, porque depois de 10 anos, você ainda está aqui, me aturando e me dando o prazer e a felicidade de ter você na minha vida. Isso já é uma vitória tremenda! Ainda mais agora, podendo te chamar de amor(graças a deus, demorou viu kkkkk). Sou muito grato por ter você como uma das pessoas mais importantes da minha vida, por poder conhecer um lado seu que talvez nem todos tenham a chance de ver, o lado doce, a gatinha manhosa que existe por baixo dessa armadura que precisou criar, mas que revela um novo encanto a cada pedacinho que conheço. E, a cada dia, eu me apaixono ainda mais por você, por cada detalhe e por completo!</p>
+        <img src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/IMG-20250104-WA0187.jpg" alt=""
+            style="max-width: 50%; border-radius: 20px; box-shadow: 0 0 20px pink;">
+        <div class="buttons">
+            <button onclick="mudarPagina(5)">Anterior</button>
+            <button onclick="mudarPagina(7)">Próximo</button>
+        </div>
+    </div>
+
+    <div id="pagina7" class="container">
+        <h1>Determinada!</h1>
+        <p>Você é uma mulher que não desiste fácil daquilo que almeja. Que se descabela com todas as coisas que tem para fazer, mas, ainda assim, faz tudo com excelência. Que se preocupa, se planeja e se esforça ao máximo para cumprir tudo o que se propõe a fazer, sempre dando o seu melhor para que tudo saia perfeito. Mesmo com medo, mesmo preocupada, você segue lutando e se superando.</p>
+        <p>Acompanho isso há um bom tempo, desde o projeto final do ensino médio até as suas conquistas na Fiocruz. Talvez só com um pequeno detalhe: às vezes, você não confia em si mesma tanto quanto deveria. Mas há algo em comum em tudo o que faz: tudo é realizado pela mulher mais inteligente, pela mulher que não desiste fácil e que sempre entrega tudo com perfeição. Você é tão capacitada e preparada que até confunde a banca de avaliação, apresentando um mestrado com nível de doutorado (palavras deles).</p>
+        <p>Tenho muito orgulho de você, meu amor! Tenho certeza de que todos que têm o privilégio de te conhecer e ter sua amizade sentem o mesmo. Todos se orgulham da mulher incrível que você tem se tornado, das suas conquistas e de tudo o que ainda está por vir. E saiba que, em cada passo, em cada vitória, eu estarei aqui, comemorando ao seu lado e te aplaudindo de pé!</p>
+        <img src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/Screenshot_20250218_170203_Video Player.jpg" alt=""
+            style="max-width: 50%; border-radius: 20px; box-shadow: 0 0 20px pink;">
+        <div class="buttons">
+            <button onclick="mudarPagina(6)">Anterior</button>
+            <button onclick="mudarPagina(8)">Próximo</button>
+        </div>
+    </div>
+
+    <div id="pagina8" class="container">
+        <h1>Simplesmente Mônica!</h1>
+        <p>Essas coisas que foram ditas são apenas um pouquinho da pessoa incrível e maravilhosa que você é, aquela que faz com que todos ao seu redor se encantem e se apaixonem por você a cada dia mais!</p>
+        <img src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/IMG-20250201-WA0007.jpg" alt=""
+            style="max-width: 50%; border-radius: 20px; box-shadow: 0 0 20px pink;">
+        <div class="buttons">
+            <button onclick="mudarPagina(7)">Anterior</button>
+            <button onclick="mostrarPopup()">Parabéns!</button>
+        </div>
+    </div>
+
+    <div id="popup" class="popup">
+        <h2>Parabéns, princesa! 🎂❤️</h2>
+        <p>Chegou o grande dia, amor! O dia em que nasceu o amor da minha vida. Fico muito feliz por ter a oportunidade de passar esse dia ao seu lado. Te desejo tudo de bom, muito sucesso, dinheiro e que você consiga conquistar tudo o que almeja, pois você merece isso tudo e muito mais!</p>
+        <p>Muito importante também: te desejo bastante paciência, porque Deus sabe que eu vou testar bastante ela. E se não for eu, sempre tem algumas pessoas que testam um pouquinho, né?</p>
+        <p>Obrigado por ser essa mulher maravilhosa, que me encanta mais a cada dia desde que começamos a ter mais contato. Sempre com seu jeito incrível e brincalhão, sendo uma namorada espetacular, me fazendo o homem mais feliz do mundo. Poder dividir os momentos da minha vida com você me faz sentir ainda mais sortudo! Que você continue sendo essa mulher esforçada, dedicada e trabalhadora, que está sempre tentando aprender, evoluir e dar o seu melhor.</p>
+        <p>São tantas coisas que eu poderia dizer que acabo me perdendo... O aniversário é seu, mas quem tem sido presenteado sou eu, todos os dias, por ter você ao meu lado. Dividindo cada pequeno detalhe do nosso dia, as fofocas que sempre rendem momentos divertidos. E nesses momentos, ver você sorrindo com aquele sorriso que eu amo se torna a melhor parte do meu dia. Nossas brincadeiras, em que um já olha para o outro sorrindo... Tudo com você se torna maravilhoso, porque você tem o poder de fazer com que tudo ao seu lado seja perfeito.</p>
+        <p>Obrigado por estar sempre comigo, por me fazer tão bem. Espero poder retribuir cada pedacinho da felicidade que você me dá todos os dias. Que este seja o primeiro de infinitos aniversários em que eu possa te parabenizar dessa forma: agradecendo por ter você, a melhor namorada do mundo, exatamente do jeitinho que eu sempre sonhei.</p>
+        <p>E, por mais que você tenha demorado oito anos para ceder aos meus encantos, cada segundo de espera valeu a pena!</p>
+        <p><b>Parabéns pelo seu dia, minha princesa. Eu te amo!! ❤️</b></p>
+        <span class="close-btn" onclick="fecharPopup()">✖</span>
+        <span class="close-btn-footer" onclick="fecharPopup()">✖</span>
+    </div>
+
+    <div id="creditos" class="creditos">
+        <h2>❤️ Dedicado à mulher mais incrível e maravilhosa do mundo! ❤️</h2>
+        <h2>❤️ Feito pelo homem mais sortudo do mundo! ❤️</h2>
+        <button onclick="reiniciar()">Inicio</button>
+        <ag><p>Agradecimento especial à Andressa, Mahat e Vitória. Vocês são demais!</p></ag>
+    </div>
+    
+    <button class="lock-btn" onclick="openLockPopup()">🔒</button>
+    
+    <div id="lockPopup" class="popup2">
+        <span class="popupcadeado" onclick="closeLockPopup()">✖</span>
+        <p>Você é a Mônica? Se sim, quando foi o nosso primeiro beijo?</p>
+        <input type="text" id="lockAnswer" placeholder="__/__/____" maxlength="10" oninput="applyDateMask(this)">
+        <button onclick="checkLockAnswer()">Confirmar</button>
+    </div>
+
+    <div id="messagePopup" class="popup">
+        <span class="popupcadeado" onclick="closeMessagePopup()">✖</span>
+        <p>Você sempre me pergunta o que aconteceu por eu estar te olhando tanto. E eu sempre respondo 'nada', mas com um sorriso no rosto. No fundo, estou admirando a mulher incrível que você é, porque você é tudo o que eu sempre quis.</p>
+        <p>E te olho tanto porque, se eu te olhar cem vezes, em cada uma delas estarei me apaixonando um pouco mais. Talvez porque ainda custe a acreditar que estamos finalmente vivendo isso, ou simplesmente porque sinto uma felicidade imensa por ter você ao meu lado em todos os momentos. Às vezes, me perco nos seus olhos, no seu sorriso, e acabo ficando do jeito que você já conhece, com aquela carinha de abobalhado te olhando... Igualzinho à cara que eu estou fazendo agora, enquanto escrevo isso. Como é bom ter você!</p>
+        <p>Talvez eu nunca tenha te falado isso, mas hoje posso dizer, sem medo de errar, que sou muito grato por ter você na minha vida. Sou o homem mais sortudo do mundo por ter essa mulher maravilhosa ao meu lado, por ter a honra de falar, de gritar para o mundo inteiro ouvir que você é minha mulher, minha namorada!!</p>
+        <p>E digo isso aqui, sem medo de nada: <b>eu te amo!</b> Você me faz um homem muito feliz, e a cada dia tenho ainda mais certeza disso – certeza de que é você e sempre foi!</p>
+        <p>Obrigado por tudo, meu amor!❤️</p>
+    </div>
+
+</div>
+    <script>
+        function applyDateMask(input) {
+            input.value = input.value
+                .replace(/\D/g, '') 
+                .replace(/^(\d{2})(\d)/, '$1/$2') 
+                .replace(/^(\d{2})\/(\d{2})(\d)/, '$1/$2/$3') 
+                .replace(/(\d{2})\/(\d{2})\/(\d{4}).*/, '$1/$2/$3'); 
+        }
+
+        function openLockPopup() {
+            document.getElementById("lockPopup").style.display = "block";
+        }
+        
+        function closeLockPopup() {
+            document.getElementById("lockPopup").style.display = "none";
+            document.getElementById("lockAnswer").value = "";
+        }
+        
+        function checkLockAnswer() {
+            var answer = document.getElementById("lockAnswer").value.toLowerCase();
+            if (answer === "30/11/2024") {
+                closeLockPopup();
+                document.getElementById("messagePopup").style.display = "block";
+            } else {
+                alert("Você não é ela!🖕🏼🖕🏼");
+                window.close();                
+                closeLockPopup();
+            }
+        }
+
+        function closeMessagePopup() {
+            document.getElementById("messagePopup").style.display = "none";
+        }
+        
+        function createHearts() {
+            const heartContainer = document.querySelector('.hearts');
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.textContent = '❤';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heartContainer.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }, 500);
+        }
+        createHearts();
+      
+        let audio = document.getElementById("musica");
+
+        function iniciarAudio() {
+            audio.play().catch(error => console.log("Autoplay bloqueado:", error));
+            document.removeEventListener("click", iniciarAudio);
+            document.removeEventListener("touchstart", iniciarAudio);
+        }
+    
+        document.addEventListener("click", iniciarAudio);
+        document.addEventListener("touchstart", iniciarAudio);
+    
+        function toggleAudio() {
+            let audio = document.getElementById("musica");
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+        function mudarPagina(pagina) {
+            document.querySelectorAll('.container').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(`pagina${pagina}`).classList.add('active');
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });    
+        }
+
+        function mostrarPopup() {
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('popup').scrollTop = 0; 
+        }
+
+        function fecharPopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('creditos').style.display = 'block';
+        }
+
+        function reiniciar() {
+            document.getElementById('creditos').style.display = 'none';
+            mudarPagina(1);
+        }
+
+        async function atualizarTempo() {
+            await sincronizarHorario(); // Ajusta a diferença antes de iniciar
+        
+            const inicio = new Date('2024-11-30T15:05:00-03:00'); // Data fixa do início
+        
+            setInterval(() => {
+                const agora = new Date(new Date().getTime() + diferencaHorario); // Ajusta para horário de Brasília
+                const diff = new Date(agora - inicio);
+        
+                const anos = diff.getUTCFullYear() - 1970;
+                const meses = diff.getUTCMonth();
+                const dias = diff.getUTCDate() - 1;
+                const horas = diff.getUTCHours();
+                const minutos = diff.getUTCMinutes();
+                const segundos = diff.getUTCSeconds();
+        
+                document.getElementById('tempoJuntos').textContent = `${anos} anos, ${meses} meses, ${dias} dias, ${horas}h ${minutos}m ${segundos}s`;
+            }, 1000);
+        }
+        
+        atualizarTempo();      
+        
+        async function obterHorarioBrasilia() {
+            try {
+                const response = await fetch("https://www.timeapi.io/api/Time/current/zone?timeZone=America/Sao_Paulo");
+                const data = await response.json();
+                return new Date(`${data.date}T${data.time}-03:00`);
+            } catch (error) {
+                return new Date(); 
+            }
+        }
+
+        let diferencaHorario = 0; // Diferença entre o horário local e o de Brasília
+
+        async function sincronizarHorario() {
+            try {
+                const response = await fetch("https://www.timeapi.io/api/Time/current/zone?timeZone=America/Sao_Paulo");
+                const data = await response.json();
+        
+                const horarioBrasilia = new Date(
+                    data.year, 
+                    data.month - 1, // Mês no JavaScript começa do zero
+                    data.day, 
+                    data.hour, 
+                    data.minute, 
+                    data.seconds || 0
+                );
+        
+                if (isNaN(horarioBrasilia.getTime())) {
+                    throw new Error("Falha ao criar o objeto Date");
+                }
+        
+                // Pegando o horário local para calcular a diferença
+                const horarioLocal = new Date();
+                diferencaHorario = horarioBrasilia - horarioLocal; // Ajuste do tempo baseado no horário de Brasília
+        
+            } catch (error) {
+                diferencaHorario = 0; // Se a API falhar, usa o relógio do dispositivo sem ajustes
+            }
+        }
+        
+        async function verificarAcesso() {
+            await sincronizarHorario(); // Ajusta a diferença antes de iniciar
+        
+            const dataLiberacao = new Date('2025-03-10T00:00:00-03:00'); // Data alvo fixa
+            const agora = new Date(new Date().getTime() + diferencaHorario); // Ajusta a diferença no relógio local
+
+            if (agora >= dataLiberacao) {
+                document.getElementById('bloqueio').style.display = "none"; // Esconde a tela de bloqueio
+                document.getElementById('conteudoSite').style.display = "block"; // Exibe o conteúdo do site
+            } else {    
+                setInterval(() => {
+                    const agora = new Date(new Date().getTime() + diferencaHorario); // Ajusta a diferença no relógio local
+                    const diff = dataLiberacao - agora; // Calcula o tempo restante
+            
+                    if (diff <= 0) {
+                        location.reload(); // Atualiza a página quando chegar a data
+                        return;
+                    }
+            
+                    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+            
+                    document.getElementById('tempoRestante').textContent = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+                }, 1000);
+            }
+        }
+        
+        verificarAcesso();
+
+
+        document.addEventListener("contextmenu", function(event) {
+          event.preventDefault();
+        });
+        
+        document.addEventListener("keydown", function(event) {
+          if (event.keyCode === 123) {
+            event.preventDefault();
+          }
+        });   
+    </script>
+</body>
+</html>
