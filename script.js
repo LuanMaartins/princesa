@@ -219,3 +219,15 @@ function carregarConteudo(pagina, botao) {
         });
 }
 
+        function mudarTela(tela) {
+            document.querySelectorAll('.container').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(`tela${tela}`).classList.add('active');
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });    
+        }
+
