@@ -289,7 +289,9 @@ body {
         }
 
 #submenu {
-  margin-top: 20px;
+    margin-top: 200px; /* dá espaço para a parte fixa no topo */
+    position: relative;
+    z-index: 0;
 }
 
 .submenu-container {
