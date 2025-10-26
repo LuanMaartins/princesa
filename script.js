@@ -194,3 +194,22 @@ function applyDateMask(input) {
             event.preventDefault();
           }
         });   
+		
+		function carregarConteudo(url, btn) {
+			// Remove classe ativo de todos os botões
+			document.querySelectorAll('.submenu-container .buttons').forEach(b => b.classList.remove('ativo'));
+			// Adiciona classe ativo no botão clicado
+			btn.classList.add('ativo');
+
+			fetch(url)
+				.then(response => {
+					if (!response.ok) throw new Error("Erro ao carregar a página");
+					return response.text();
+				})
+				.then(html => {
+					document.getElementById('conteudo-subpagina').innerHTML = html;
+				})
+				.catch(err => {
+					document.getElementById('conteudo-subpagina').innerHTML = `<p style="color:red;">Falha ao carregar a página: ${err}</p>`;
+				});
+		}
