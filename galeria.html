@@ -27,15 +27,12 @@
       padding: 20px;
     }
     .galeria img {
-      
+	  height:250px;
+      width:250px;
       object-fit: cover;
       border-radius: 10px;
       cursor: pointer;
       transition: transform 0.3s ease;
-		    width: auto;
-    max-width: 90vw; /* largura máxima da tela */
-    height: auto;
-    max-height: 90vh;
     }
     .galeria img:hover {
       transform: scale(1.1);
@@ -49,11 +46,11 @@
       background-color: rgba(0,0,0,0.9);
       justify-content: center;
       align-items: center;
-      z-index: 999;
+      z-index: 999;	
     }
     .modal img {
-      max-width: 90%;
-      max-height: 90%;
+      max-width: 90vw;
+      max-height: 90vh;
       border-radius: 15px;
     }
   </style>
