@@ -4,7 +4,8 @@ body {
             font-family: Arial, sans-serif;
             text-align: center;
             background-color: black;
-            overflow: auto;
+            overflow-x: auto;
+            overflow-y: scroll; 
         }
 
         html, body {
