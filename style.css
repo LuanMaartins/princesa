@@ -341,16 +341,13 @@ main {
   border-radius: 10px;
   font-size: 1.2rem;
   font-family: 'Raleway', sans-serif;
-  cursor: pointer;
+  cursor: pointer;            
+  box-shadow: 0 0 10px pink;
 }
 
 .submenu-btn:hover {
     background-color: red;
     color: white;
-}
-
-.submenu-btn.ativo {
-    box-shadow: 0 0 10px pink;
 }
 
 /* Área de conteúdo da subpágina */
