@@ -367,6 +367,7 @@ main {
   font-family: 'Raleway', sans-serif;
   cursor: pointer;            
   box-shadow: 0 0 10px pink;
+  margin-top: 20px;          
 }
 
 .submenu-btn:hover {
