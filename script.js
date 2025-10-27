@@ -185,7 +185,7 @@ function applyDateMask(input) {
         verificarAcesso();
 
 
-        document.addEventListener("contextmenu", function(event) {
+       /* document.addEventListener("contextmenu", function(event) {
           event.preventDefault();
         });
         
@@ -193,7 +193,7 @@ function applyDateMask(input) {
           if (event.keyCode === 123) {
             event.preventDefault();
           }
-        });   
+        });   */
 		
 function carregarConteudo(pagina, botao) {
     // Remove a classe ativo de todos os botões
@@ -241,6 +241,7 @@ function irParaPagina(paginaHTML) {
     fetch(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}&fields=files(id,name,mimeType)`)
       .then(res => res.json())
       .then(data => {
+		  console.log(data.files);
         const galeria = document.getElementById('galeria');
         data.files.forEach(file => {
           if (file.mimeType.startsWith('image/')) {
