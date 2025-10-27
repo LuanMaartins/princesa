@@ -154,7 +154,19 @@ body {
                 max-height: 85vh;
                 padding: 15px;
             }
-        }
+
+              .menu-fixo {
+                padding: 8px 0 12px 0;
+              }
+            
+              .menu-fixo .tempo {
+                font-size: 1rem;
+              }
+            
+              .menu-fixo h1 {
+                font-size: 2rem;
+              }
+                    }
         
         .popup2 {
             position: fixed;
@@ -338,19 +350,6 @@ body {
   margin: 0;
 }
 
-@media (max-width: 600px) {
-  .menu-fixo {
-    padding: 8px 0 12px 0;
-  }
-
-  .menu-fixo .tempo {
-    font-size: 1rem;
-  }
-
-  .menu-fixo h1 {
-    font-size: 2rem;
-  }
-}
 
 /* Espaço abaixo do menu fixo */
 main {
