@@ -289,33 +289,59 @@ body {
             border-radius: 5px;
         }
 
+.menu-fixo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 10px 0;
+  z-index: 1000;
+  box-shadow: 0 0 20px pink;
+  backdrop-filter: blur(6px);
+}
+
+.menu-fixo .title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.8rem;
+  text-shadow: 0 0 10px pink, 0 0 20px red;
+  margin: 5px 0;
+}
+
+.menu-fixo .footer {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.3rem;
+}
+
+/* Espaço abaixo do menu fixo */
+main {
+  margin-top: 150px; /* ajuste conforme a altura do menu fixo */
+}
+
+/* Botões do submenu */
 #submenu {
-    margin-top: 150px; /* espaço abaixo da parte fixa */
-    position: relative;
-    z-index: 0;
-    text-align: center;
+  text-align: center;
 }
 
 .submenu-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
 .submenu-btn {
-    display: block; /* garante botão em linha própria */
-    width: 300px;
-    text-align: center;
-    background-color: pink;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    font-family: 'Raleway', sans-serif;
-    cursor: pointer;
-    border-radius: 10px;
+  width: 300px;
+  padding: 10px 20px;
+  background-color: pink;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-family: 'Raleway', sans-serif;
+  cursor: pointer;
 }
 
 .submenu-btn:hover {
