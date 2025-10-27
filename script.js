@@ -240,7 +240,6 @@ function irParaPagina(paginaHTML) {
     fetch(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}&fields=files(id,name,mimeType)`)
       .then(res => res.json())
       .then(data => {
-		  console.log(data.files);
         const galeria = document.getElementById('galeria');
         data.files.forEach(file => {
           if (file.mimeType.startsWith('image/')) {
@@ -258,5 +257,62 @@ function irParaPagina(paginaHTML) {
     }
     function fecharModal() {
       document.getElementById('modal').style.display = 'none';
-    }	  
+    }	
+
+
+function mostrarImagensAleatorias() {
+    fetch(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}&fields=files(id,name,mimeType)`)
+      .then(res => res.json())
+      .then(data => {
+        const imagens = data.files.filter(file => file.mimeType.startsWith('image/'));
+        const embaralhadas = imagens.sort(() => 0.5 - Math.random()).slice(0, 5);
+
+        const galeria = document.getElementById('galeria-aleatoria');
+        if (!galeria) return;
+
+        embaralhadas.forEach((file, index) => {
+            const img = document.createElement('img');
+            img.src = `https://lh3.googleusercontent.com/d/${file.id}=w1000`;
+            img.style.position = 'fixed';
+            img.style.top = `${Math.random() * 80 + 10}%`;
+            img.style.left = `${Math.random() * 80 + 10}%`;
+            img.style.width = '150px';
+            img.style.opacity = 0;
+            img.style.pointerEvents = 'auto';
+            img.style.transition = 'all 1s ease';
+            img.style.transform = `rotate(${Math.random() * 40 - 20}deg) scale(0.5)`;
+            img.style.cursor = 'pointer';
+
+            img.onclick = () => abrirModalAleatorio(img.src);
+
+            galeria.appendChild(img);
+
+            // Animação de entrada
+            setTimeout(() => {
+                img.style.opacity = 1;
+                img.style.transform = `rotate(${Math.random() * 30 - 15}deg) scale(1.1) translate(${Math.random() * 50 - 25}px, ${Math.random() * 50 - 25}px)`;
+            }, index * 400);
+
+            // Movimento contínuo aleatório
+            setInterval(() => {
+                img.style.transform = `rotate(${Math.random() * 30 - 15}deg) scale(1.1) translate(${Math.random() * 50 - 25}px, ${Math.random() * 50 - 25}px)`;
+            }, 2000 + Math.random() * 2000);
+        });
+      });
+}
+
+function abrirModalAleatorio(src) {
+    const modal = document.getElementById('modal-aleatorio');
+    document.getElementById('imgModal-aleatorio').src = src;
+    modal.style.display = 'flex';
+}
+
+document.getElementById('modal-aleatorio')?.addEventListener('click', () => {
+    document.getElementById('modal-aleatorio').style.display = 'none';
+});
+
+// --- Chamar a função apenas na tela que quer as imagens aleatórias ---
+if (document.getElementById('galeria-aleatoria')) {
+    mostrarImagensAleatorias();
+}
 
