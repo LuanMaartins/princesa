@@ -259,69 +259,6 @@ function irParaPagina(paginaHTML) {
       document.getElementById('modal').style.display = 'none';
     }	
 
-
-function teste() {
-
-  fetch(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}&fields=files(id,name,mimeType)`)
-    .then(res => res.json())
-    .then(data => {
-      const imagens = data.files.filter(file => file.mimeType.startsWith('image/'));
-      const selecionadas = imagens.sort(() => 0.5 - Math.random()).slice(0, 5);
-
-      selecionadas.forEach(file => {
-          const img = document.createElement('img');
-		  img.src = `https://lh3.googleusercontent.com/d/${file.id}=w1000`;
-		  img.style.position = 'fixed';
-		  img.style.width = `${100 + Math.random() * 150}px`;
-		
-		  // 🔽 Pega tamanho calculado (largura e altura) antes de posicionar
-		  const imgWidth = parseFloat(img.style.width);
-		  const imgHeight = imgWidth; // assume imagem quadrada — pode ajustar se quiser
-		  const margin = 20; // margem mínima das bordas
-		
-		  // 🔽 Define área máxima de posicionamento visível
-		  const maxLeft = window.innerWidth - imgWidth - margin;
-		  const maxTop = window.innerHeight - imgHeight - margin;
-		
-		  // 🔽 Calcula posições aleatórias dentro do limite da tela
-		  const left = Math.random() * maxLeft + margin;
-		  const top = Math.random() * maxTop + margin;
-		
-		  // 🔽 Define rotação e efeitos
-		  const rotate = Math.random() * 360;
-		
-		  img.style.left = `${left}px`;
-		  img.style.top = `${top}px`;
-		  img.style.transform = `rotate(${rotate}deg)`;
-		  img.style.opacity = 0;
-		  img.style.transition = 'all 1s ease';
-		  img.style.cursor = 'pointer';
-		  img.style.zIndex = 999;
-
-        img.onclick = () => abrirModalExplosao(img.src);
-
-        document.body.appendChild(img);
-
-          // 👇 Faz a imagem surgir suavemente
-		  setTimeout(() => {
-		    img.style.opacity = 1;
-		  }, 100);
-		
-		  // 👇 Ao clicar, faz a imagem sumir e remove do DOM
-		  img.onclick = () => {
-		    img.style.opacity = 0;
-		    img.style.transform += ' scale(0.8)'; // efeito de encolher opcional
-		    setTimeout(() => img.remove(), 1000); // remove após a transição
-		  };
-
-        // Movimento aleatório contínuo
-        setInterval(() => {
-          img.style.transform = `rotate(${Math.random() * 360}deg) translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px)`;
-        }, 2500 + Math.random() * 2000);
-      });
-    });
-}
-
 document.getElementById('modal-aleatorio')?.addEventListener('click', () => {
   document.getElementById('modal-aleatorio').style.display = 'none';
 });
@@ -401,6 +338,11 @@ function mostrarExplosaoDeImagens() {
             }
           }, 1000);
         };
+
+		setInterval(() => {
+          img.style.transform = `rotate(${Math.random() * 360}deg) translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px)`;
+        }, 2500 + Math.random() * 2000);
+      });
 
         img.dataset.explosao = 'true';
         document.body.appendChild(img);
