@@ -9,13 +9,13 @@ body {
 
         html, body {
             height: 100%;
-            overflow-y: auto; 
+            overflow-y: scroll; 
             overflow-x: hidden; 
             scroll-behavior: smooth; 
             touch-action: manipulation; 
+            scrollbar-color: pink transparent;
         }
-position: absolute;
-padding-top: 150px; 
+
         .container {
             position: relative;
             width: 100vw;
@@ -40,16 +40,13 @@ padding-top: 150px;
             display: none;
         }
 
-position: fixed;
-            top: 10px;
-
         .title {
             text-align: center;
             font-size: 3rem;
             font-family: 'Great Vibes', cursive;
             text-shadow: 0 0 10px pink, 0 0 20px red;
             position: sticky;
-            top: 0px;
+            top: 10px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 1000;
