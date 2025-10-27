@@ -7,13 +7,31 @@ body {
             overflow: auto;
         }
 
+/* Personalização visual */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: pink;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff7da8;
+}
+
         html, body {
             height: 100%;
-            overflow-y: auto; 
+            overflow-y: scroll; 
             overflow-x: hidden; 
             scroll-behavior: smooth; 
             touch-action: manipulation; 
-            scrollbar-color: pink transparent;
+            scrollbar-color: pink black;
         }
 
         .container {
