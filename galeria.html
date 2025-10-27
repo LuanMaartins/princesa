@@ -7,6 +7,54 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="style.css">
+
+	<style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Great Vibes', cursive;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3em;
+      margin: 20px 0;
+    }
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+    }
+    .galeria img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .galeria img:hover {
+      transform: scale(1.1);
+    }
+    /* Fundo escuro do zoom */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 15px;
+    }
+  </style>
+	
 </head>
 <body>
 
@@ -27,15 +75,45 @@
     </div>
 
 	<section id="submenu">
-		<iframe 
+		<!--<iframe 
 			src="https://drive.google.com/embeddedfolderview?id=1VzcLxP8yAdYeexNHiw01VtWi4h79VBRQ#grid" 
 		  	style="width:100%; height:600px; border:0;">
-		</iframe>
+		</iframe>-->
+		  <div id="galeria" class="galeria"></div>
+
+		<div id="modal" class="modal" onclick="fecharModal()">
+			<img id="imgModal" src="">
+		</div>
 	    <div class="submenu-container">
 			<button class="submenu-btn ativo" onclick="irParaPagina('index.html')">Pagina Inicial</button>
 		</div>
 	</section>
 
-  <script src="script.js"></script>
+  <script src="script.js">
+	const folderId = "1VzcLxP8yAdYeexNHiw01VtWi4h79VBRQ"; // ID da sua pasta
+    const apiKey = "AIzaSyD-DfJgb98-zuJFSChdAt0XRW74ERAxfi4"; // precisa gerar no Google Cloud
+
+    fetch(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}&fields=files(id,name,mimeType)`)
+      .then(res => res.json())
+      .then(data => {
+        const galeria = document.getElementById('galeria');
+        data.files.forEach(file => {
+          if (file.mimeType.startsWith('image/')) {
+            const img = document.createElement('img');
+            img.src = `https://drive.google.com/uc?id=${file.id}`;
+            img.onclick = () => abrirModal(img.src);
+            galeria.appendChild(img);
+          }
+        });
+      });
+
+    function abrirModal(src) {
+      document.getElementById('imgModal').src = src;
+      document.getElementById('modal').style.display = 'flex';
+    }
+    function fecharModal() {
+      document.getElementById('modal').style.display = 'none';
+    }	  
+  </script>
 </body>
 </html>
