@@ -296,19 +296,21 @@ body {
             z-index: 1000; 
         }
 
-             .voltar-btn {
-                display: block;         /* segue fluxo normal */
-                margin: 20px auto;      /* centralizado */
-                padding: 5px 10px;
-                font-size: 1em;
-                background-color: pink;
-                color: black;
-                border: none;
-                border-radius: 10px;
-                cursor: pointer;
-                transition: 0.3s;
-                z-index: 10;            /* apenas para garantir sobreposição de elementos internos */
-            }
+       .voltar-btn {
+            position: fixed;
+            top: 160px;
+            left: 10px;
+            padding: 5px 10px;
+            font-size: 1em;
+            background-color: pink;
+            color: black;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            animation: infinite;
+            z-index: 1000;            /* apenas para garantir sobreposição de elementos internos */
+       }
 
         #lockAnswer {
             font-family: 'Raleway', sans-serif;
