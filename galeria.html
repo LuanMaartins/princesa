@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Princesa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="hearts"></div>
+    
+    <audio id="musica" autoplay loop>
+        <source src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/Iframe%20Shawn%20Mendes%20-%20Kid%20In%20Love%20(Official%20Audio)%20%5BQiEz1GleIbs%5D.mp3" type="audio/mp3">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <button class="pause-btn" onclick="toggleAudio()">⏸️</button>
+
+    <div class="title">
+         <div class="footer">
+            <t class="timer">Tempo juntos: <span id="tempoJuntos"></span></t>
+        </div>
+        <h1 class="title">Nós</h1>
+    </div>
+
+  <iframe 
+  src="https://drive.google.com/drive/folders/1VzcLxP8yAdYeexNHiw01VtWi4h79VBRQ?usp=drive_link" 
+  style="width:100%; height:600px; border:0;">
+</iframe>
+
+
+	<section id="submenu">
+	    <div class="submenu-container">
+			<button class="submenu-btn ativo" onclick="irParaPagina('index.html')">Pagina Inicial</button>
+		</div>
+	</section>
+
+  <script src="script.js"></script>
+</body>
+</html>
