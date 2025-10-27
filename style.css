@@ -283,6 +283,23 @@ body {
             animation: infinite;
             z-index: 1000; 
         }
+
+        .voltar-btn {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            padding: 5px 10px;
+            font-size: 1em;
+            background-color: pink;
+            color: black;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            animation: infinite;
+            z-index: 1000; 
+        }
+
         #lockAnswer {
             font-family: 'Raleway', sans-serif;
             font-size: 14px;
