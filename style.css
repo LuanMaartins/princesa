@@ -297,15 +297,30 @@ body {
   text-align: center;
   color: white;
   background-color: rgba(0, 0, 0, 0.9);
-  padding: 10px 10;
+  padding: 10px 0 15px 0;
   z-index: 1000;
   box-shadow: 0 0 20px pink;
   backdrop-filter: blur(6px);
 }
 
+/* Texto do tempo */
+.menu-fixo .tempo {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+/* Título principal */
+.menu-fixo h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.8rem;
+  text-shadow: 0 0 10px pink, 0 0 20px red;
+  margin: 0;
+}
+
 /* Espaço abaixo do menu fixo */
 main {
-  margin-top: 150px; /* ajuste conforme a altura do menu fixo */
+  margin-top: 140px; /* ajuste conforme a altura do menu fixo */
 }
 
 /* Botões do submenu */
