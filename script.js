@@ -269,27 +269,50 @@ function mostrarExplosaoDeImagens() {
       const selecionadas = imagens.sort(() => 0.5 - Math.random()).slice(0, 5);
 
       selecionadas.forEach(file => {
-        const img = document.createElement('img');
-        img.src = `https://lh3.googleusercontent.com/d/${file.id}=w1000`;
-        img.style.position = 'fixed';
-        img.style.width = `${100 + Math.random() * 150}px`;
-        img.style.top = `${Math.random() * 80 + 10}%`;
-        img.style.left = `${Math.random() * 80 + 10}%`;
-        img.style.transform = `rotate(${Math.random() * 360}deg)`;
-        img.style.opacity = 0;
-        img.style.transition = 'all 1s ease';
-        img.style.cursor = 'pointer';
-        img.style.zIndex = 999;
+          const img = document.createElement('img');
+		  img.src = `https://lh3.googleusercontent.com/d/${file.id}=w1000`;
+		  img.style.position = 'fixed';
+		  img.style.width = `${100 + Math.random() * 150}px`;
+		
+		  // 🔽 Pega tamanho calculado (largura e altura) antes de posicionar
+		  const imgWidth = parseFloat(img.style.width);
+		  const imgHeight = imgWidth; // assume imagem quadrada — pode ajustar se quiser
+		  const margin = 20; // margem mínima das bordas
+		
+		  // 🔽 Define área máxima de posicionamento visível
+		  const maxLeft = window.innerWidth - imgWidth - margin;
+		  const maxTop = window.innerHeight - imgHeight - margin;
+		
+		  // 🔽 Calcula posições aleatórias dentro do limite da tela
+		  const left = Math.random() * maxLeft + margin;
+		  const top = Math.random() * maxTop + margin;
+		
+		  // 🔽 Define rotação e efeitos
+		  const rotate = Math.random() * 360;
+		
+		  img.style.left = `${left}px`;
+		  img.style.top = `${top}px`;
+		  img.style.transform = `rotate(${rotate}deg)`;
+		  img.style.opacity = 0;
+		  img.style.transition = 'all 1s ease';
+		  img.style.cursor = 'pointer';
+		  img.style.zIndex = 999;
 
         img.onclick = () => abrirModalExplosao(img.src);
 
         document.body.appendChild(img);
 
-        // Animação inicial
-        setTimeout(() => {
-          img.style.opacity = 1;
-          img.style.transform = `rotate(${Math.random() * 360}deg) translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px)`;
-        }, Math.random() * 800);
+          // 👇 Faz a imagem surgir suavemente
+		  setTimeout(() => {
+		    img.style.opacity = 1;
+		  }, 100);
+		
+		  // 👇 Ao clicar, faz a imagem sumir e remove do DOM
+		  img.onclick = () => {
+		    img.style.opacity = 0;
+		    img.style.transform += ' scale(0.8)'; // efeito de encolher opcional
+		    setTimeout(() => img.remove(), 1000); // remove após a transição
+		  };
 
         // Movimento aleatório contínuo
         setInterval(() => {
@@ -297,16 +320,6 @@ function mostrarExplosaoDeImagens() {
         }, 2500 + Math.random() * 2000);
       });
     });
-}
-
-// Modal independente do outro
-function abrirModalExplosao(src) {
-  const modal = document.getElementById('modal-aleatorio');
-  const img = document.getElementById('imgModal-aleatorio');
-  if (modal && img) {
-    img.src = src;
-    modal.style.display = 'flex';
-  }
 }
 
 document.getElementById('modal-aleatorio')?.addEventListener('click', () => {
