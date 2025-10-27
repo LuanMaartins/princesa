@@ -148,7 +148,7 @@ body {
             color: black;
         } 
 
-        @media (max-width: 600px) {
+        @media (max-width: 500px) {
             .popup {
                 width: 85%;
                 max-height: 85vh;
@@ -166,7 +166,16 @@ body {
               .menu-fixo h1 {
                 font-size: 1.5rem;
               }
-                    }
+              p, h2, h3, h4, span, a, li {
+                font-size: 0.9rem; /* ou menor, tipo 0.8rem se quiser mais compacto */
+              }
+            
+              /* 🔹 Caso tenha botões ou títulos grandes */
+              button {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+              }
+            }
         
         .popup2 {
             position: fixed;
