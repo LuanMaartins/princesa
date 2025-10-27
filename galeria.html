@@ -27,12 +27,15 @@
       padding: 20px;
     }
     .galeria img {
-      width: 200px;
-      height: 200px;
+      
       object-fit: cover;
       border-radius: 10px;
       cursor: pointer;
       transition: transform 0.3s ease;
+		    width: auto;
+    max-width: 90vw; /* largura máxima da tela */
+    height: auto;
+    max-height: 90vh;
     }
     .galeria img:hover {
       transform: scale(1.1);
