@@ -185,7 +185,7 @@ function applyDateMask(input) {
         verificarAcesso();
 
 
-       /* document.addEventListener("contextmenu", function(event) {
+        document.addEventListener("contextmenu", function(event) {
           event.preventDefault();
         });
         
@@ -193,7 +193,7 @@ function applyDateMask(input) {
           if (event.keyCode === 123) {
             event.preventDefault();
           }
-        });   */
+        });   
 		
 function carregarConteudo(pagina, botao) {
     // Remove a classe ativo de todos os botões
