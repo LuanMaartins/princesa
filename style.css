@@ -285,19 +285,16 @@ body {
         }
 
         .voltar-btn {
-            position: absolute;
-            bottom: 10px;
-            left: 40%;
-            padding: 5px 10px;
-            font-size: 1em;
-            background-color: pink;
-            color: black;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-            animation: infinite;
-            z-index: 1000; 
+                display: block; /* ou inline-block */
+                margin: 20px auto; /* centraliza horizontalmente */
+                padding: 5px 10px;
+                font-size: 1em;
+                background-color: pink;
+                color: black;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: 0.3s;
         }
 
         #lockAnswer {
