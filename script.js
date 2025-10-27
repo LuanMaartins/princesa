@@ -342,7 +342,6 @@ function mostrarExplosaoDeImagens() {
 		setInterval(() => {
           img.style.transform = `rotate(${Math.random() * 360}deg) translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px)`;
         }, 2500 + Math.random() * 2000);
-      });
 
         img.dataset.explosao = 'true';
         document.body.appendChild(img);
