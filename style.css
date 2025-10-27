@@ -71,7 +71,7 @@ body {
             color: white;
             background-color: black;
             padding: 5px;
-            width: 100%;
+            width: calc(100% - 10px);
         }
 
         h1, t {
@@ -311,7 +311,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: calc(100% - 10px);
   text-align: center;
   color: white;
   background-color: rgba(0, 0, 0, 0.9);
@@ -319,6 +319,7 @@ body {
   z-index: 1000;
   box-shadow: 0 0 20px pink;
   backdrop-filter: blur(6px);
+  overflow-x: hidden;
 }
 
 /* Texto do tempo */
