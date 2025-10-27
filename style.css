@@ -285,9 +285,9 @@ body {
         }
 
         .voltar-btn {
-            position: fixed;
+            position: relative;
             bottom: 10px;
-            left: 50%;
+            left: 40%;
             padding: 5px 10px;
             font-size: 1em;
             background-color: pink;
