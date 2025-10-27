@@ -9,7 +9,7 @@ body {
 
         html, body {
             height: 100%;
-            overflow-y: scroll; 
+            overflow-y: overlay; 
             overflow-x: hidden; 
             scroll-behavior: smooth; 
             touch-action: manipulation; 
