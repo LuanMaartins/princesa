@@ -234,8 +234,7 @@ function irParaPagina(paginaHTML) {
     window.location.href = paginaHTML;
 }
 
-
-	const folderId = "1VzcLxP8yAdYeexNHiw01VtWi4h79VBRQ"; // ID da sua pasta
+	const folderId = "1OXskvDUyReWhND79yc-aRofMiTjnNpii"; // ID da sua pasta
     const apiKey = "AIzaSyD-DfJgb98-zuJFSChdAt0XRW74ERAxfi4"; // precisa gerar no Google Cloud
 
     fetch(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}&fields=files(id,name,mimeType)`)
