@@ -260,7 +260,7 @@ function irParaPagina(paginaHTML) {
     }	
 
 
-function mostrarExplosaoDeImagens() {
+function teste() {
 
   fetch(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}&fields=files(id,name,mimeType)`)
     .then(res => res.json())
@@ -329,5 +329,82 @@ document.getElementById('modal-aleatorio')?.addEventListener('click', () => {
 // Só executa se a página tiver o modal específico (ou seja, só nessa tela)
 if (document.getElementById('modal-aleatorio')) {
   mostrarExplosaoDeImagens();
+}
+
+function mostrarExplosaoDeImagens() {
+  fetch(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}&fields=files(id,name,mimeType)`)
+    .then(res => res.json())
+    .then(data => {
+      const imagens = data.files.filter(f => f.mimeType.startsWith("image/"));
+      if (!imagens.length) return;
+
+      // 🔹 Cria camada escura translúcida por trás das imagens
+      const overlay = document.createElement('div');
+      overlay.style.position = 'fixed';
+      overlay.style.top = 0;
+      overlay.style.left = 0;
+      overlay.style.width = '100%';
+      overlay.style.height = '100%';
+      overlay.style.background = 'rgba(0, 0, 0, 0.6)';
+      overlay.style.zIndex = 998;
+      overlay.style.opacity = 0;
+      overlay.style.transition = 'opacity 0.8s ease';
+      document.body.appendChild(overlay);
+      setTimeout(() => overlay.style.opacity = 1, 50);
+
+      // 🔹 Escolhe 5 imagens aleatórias
+      const selecionadas = imagens.sort(() => Math.random() - 0.5).slice(0, 5);
+
+      selecionadas.forEach(file => {
+        const img = document.createElement('img');
+        img.src = `https://lh3.googleusercontent.com/d/${file.id}=w1000`;
+        img.style.position = 'fixed';
+
+        // 🔹 Tamanho maior e aleatório
+        img.style.width = `${200 + Math.random() * 250}px`;
+
+        const imgWidth = parseFloat(img.style.width);
+        const imgHeight = imgWidth; // assume imagem quadrada
+        const margin = 20;
+
+        const maxLeft = window.innerWidth - imgWidth - margin;
+        const maxTop = window.innerHeight - imgHeight - margin;
+
+        const left = Math.random() * maxLeft + margin;
+        const top = Math.random() * maxTop + margin;
+        const rotate = Math.random() * 360;
+
+        img.style.left = `${left}px`;
+        img.style.top = `${top}px`;
+        img.style.transform = `rotate(${rotate}deg) scale(1)`;
+        img.style.opacity = 0;
+        img.style.transition = 'all 1s ease';
+        img.style.cursor = 'pointer';
+        img.style.zIndex = 999;
+
+        // 🔹 Faz a imagem surgir suavemente
+        setTimeout(() => {
+          img.style.opacity = 1;
+          img.style.transform = `rotate(${rotate}deg) scale(1.1)`;
+        }, 100);
+
+        // 🔹 Ao clicar: fade + sumir + remover overlay quando todas forem fechadas
+        img.onclick = () => {
+          img.style.opacity = 0;
+          img.style.transform = `rotate(${rotate}deg) scale(0.7)`;
+          setTimeout(() => {
+            img.remove();
+            // remove overlay se todas as imagens sumirem
+            if (document.querySelectorAll('img[data-explosao]').length === 0) {
+              overlay.style.opacity = 0;
+              setTimeout(() => overlay.remove(), 800);
+            }
+          }, 1000);
+        };
+
+        img.dataset.explosao = 'true';
+        document.body.appendChild(img);
+      });
+    });
 }
 
