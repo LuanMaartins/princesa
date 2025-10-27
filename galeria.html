@@ -67,23 +67,25 @@
 
     <button class="pause-btn" onclick="toggleAudio()">⏸️</button>
 
-    <div class="title">
-         <div class="footer">
-            <t class="timer">Tempo juntos: <span id="tempoJuntos"></span></t>
-        </div>
-        <h1 class="title">Nossa Galeria</h1>
-    </div>
-
-	<section id="submenu">
-		  <div id="galeria" class="galeria"></div>
-
-		<div id="modal" class="modal" onclick="fecharModal()">
-			<img id="imgModal" src="">
+    <header class="menu-fixo">
+		<div class="tempo">
+			<t class="timer">Tempo juntos: <span id="tempoJuntos"></span></t>
 		</div>
-	    <div class="submenu-container">
-			<button class="submenu-btn ativo" onclick="irParaPagina('index.html')">Pagina Inicial</button>
-		</div>
-	</section>
+	    <h1>Nossa Galeria</h1>
+	</header>
+
+	<main>
+		<section id="submenu">
+			  <div id="galeria" class="galeria"></div>
+	
+			<div id="modal" class="modal" onclick="fecharModal()">
+				<img id="imgModal" src="">
+			</div>
+		    <div class="submenu-container">
+				<button class="submenu-btn" onclick="irParaPagina('index.html')">Pagina Inicial</button>
+			</div>
+		</section>
+	</main>
 
   <script src="script.js"></script>
 </body>
