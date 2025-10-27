@@ -284,18 +284,20 @@ body {
             z-index: 1000; 
         }
 
-        .voltar-btn {
-                display: block; /* ou inline-block */
-                margin: 20px auto; /* centraliza horizontalmente */
+            .voltar-btn {
+                position: sticky;
+                bottom: 10px;
+                margin: 20px auto;
+                display: block;
                 padding: 5px 10px;
-                font-size: 1em;
                 background-color: pink;
                 color: black;
                 border: none;
                 border-radius: 10px;
                 cursor: pointer;
-                transition: 0.3s;
-        }
+                z-index: 1000;
+            }
+
 
         #lockAnswer {
             font-family: 'Raleway', sans-serif;
