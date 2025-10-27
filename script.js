@@ -245,7 +245,7 @@ function irParaPagina(paginaHTML) {
         data.files.forEach(file => {
           if (file.mimeType.startsWith('image/')) {
             const img = document.createElement('img');
-            img.src = `https://drive.google.com/uc?id=${file.id}`;
+            img.src = `https://lh3.googleusercontent.com/d/${file.id}=w1000`;
             img.onclick = () => abrirModal(img.src);
             galeria.appendChild(img);
           }
