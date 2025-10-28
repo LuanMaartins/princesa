@@ -9,23 +9,18 @@
     <link rel="stylesheet" href="style.css">
 
 	<style>
-	body { 
-	    margin: 0; 
-	    overflow: auto; 
-	    background: #000; 
-	    line-height: 1.6; 
-	    padding: 20px; 
-	    display: flex; 
-	    justify-content: center; /* centraliza horizontalmente */
-	    align-items: center;     /* centraliza verticalmente */
-	    min-height: 100vh;       /* garante altura mínima da tela */
-	    flex-direction: column;  /* mantém os elementos empilhados */
-	}
+	body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    line-height: 1.6;
+}
 	
-	.texto-principal {
-	    max-width: 800px; 
-	    text-align: justify; 
-	}
+.texto-principal {
+    max-width: 800px;
+    width: 100%;
+    text-align: justify;
+}
   .imagem {
     display: block;
     margin: 40px auto; /* espaçamento top e bottom + centraliza */
@@ -37,6 +32,15 @@
   p {
     margin-bottom: 20px; /* espaço entre parágrafos */
   }
+
+	.wrapper {
+    display: flex;
+    justify-content: center; /* centraliza horizontalmente */
+    align-items: center;     /* centraliza verticalmente se possível */
+    min-height: 100vh;       /* altura da tela */
+    padding: 20px;
+}
+
   </style>
 	
 </head>
@@ -60,6 +64,7 @@
 
   
 	<main>
+		<div class="wrapper">
 		<div class="container active texto-principal">
 			<p>A nossa história...</p>			
 			<p>Nós nos conhecemos no primeiro ano do ensino médio, inicialmente, duas pessoas que não trocavam nem uma palavra sequer, durante o primeiro ano, em que o burrão do relacionamento acabou repetindo, então essa aproximação se tornou ainda mais improvável. Seguiu assim durante todo o segundo ano, até que finalmente, ao final do terceiro ano dela (meu segundo, burro que só), uma improvável aproximação ocorreu entre ela e uma amiga (Bia Almeida, tmj) com quem eu tinha contato, o que se iniciou com contatos simples, na hora do recreio, um beijo ignorado na despedida (pensei que ela nunca mais olharia na minha cara), e de repente tudo mudou. Em agosto de 2016, férias da escola por conta da Olimpíada, uma aproximação inimaginável aconteceu: Luan e Mônica. E naquele momento, já parecia ser Deus agindo de todas as suas formas. Ali foi como se algo tivesse mudado para esse doidão que vos fala, daquele momento em diante, não existia mais Mônica, apenas princesa. Não me lembro o porquê, mas sei que é o meu melhor presente de sempre.</p>
@@ -79,6 +84,7 @@
 			<p>Após isso, em que a aproximação já tinha ocorrido, fomos então ao mesmo evento, um evento bem tranquilo, vazio, em que qualquer um conseguiria se encontrar com facilidade, o Rock in Rio, estava tudo combinado, chegando la, tentariamos no encontrar e se ver mais uma vez, mas não foi preciso, Deus se encaregou desse serviço para nós, ao chegar ao local, por um tremenda coincidencia, chegamos juntos, ela atravessou a rua bem ali, na minha frente, logo pensei "meu deus, não é possivel", seria realmente coincidencia, ou o destino nos dando o maior dos sinais?<p>
 			 <img src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/rockinrio.jpg" alt="Imagem" class="imagem"
 		            style="max-width: 70%; border-radius: 20px; box-shadow: 0 0 20px pink;">
+		</div>
 		</div>
 	</main>
   
