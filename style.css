@@ -155,8 +155,12 @@ body {
                 padding: 15px;
             }
 
-            .t {
-                font-size: 0.9rem;
+              .menu-fixo .tempo {
+                font-size: 0.9rem; /* menor para caber na tela */
+              }
+            
+              t {
+                font-size: 1em; /* diminui proporcionalmente */
               }
             }
         
