@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Princesa & Gatinho</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="style.css">
+
+	<style>
+	body {
+    background: #000;
+	text-align: center;
+	}
+	
+.texto-principal {
+    max-width: 800px;
+    width: 100%;
+    text-align: justify;
+}
+  .imagem {
+    display: block;
+    margin: 40px auto; /* espaçamento top e bottom + centraliza */
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* opcional, deixa as bordas arredondadas */
+  }
+
+  p {	  
+    text-align: justify;
+    margin-bottom: 10px; /* espaço entre parágrafos */
+  }
+
+	.wrapper {
+    max-width: 800px;
+    margin: 80px auto 0 auto;    /* centraliza horizontalmente e dá espaço abaixo do header */
+    text-align: justify;
+}
+
+		
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 1001;	
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 15px;		
+      z-index: 1002;
+    }
+
+  </style>
+	
+</head>
+<body>
+
+  <div class="hearts"></div>
+    
+    <audio id="musica" autoplay loop>
+        <source src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/Iframe%20Shawn%20Mendes%20-%20Kid%20In%20Love%20(Official%20Audio)%20%5BQiEz1GleIbs%5D.mp3" type="audio/mp3">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <button class="pause-btn" onclick="toggleAudio()">⏸️</button>
+
+    <header class="menu-fixo">
+		<div class="tempo">
+			<t class="timer">Tempo juntos: <span id="tempoJuntos"></span></t>
+		</div>
+	    <h1>1 ano de nós</h1>
+	</header>
+
+	<div id="modal" class="modal" onclick="fecharModal()">
+	    <img id="imgModal" src="" alt="Imagem">
+	</div>
+	
+	<main>
+		<div class="wrapper">
+			<div class="container active texto-principal">
+				<p>O nosso primeiro ano...</p>			
+				<img src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/20170720_153649.jpg" alt="Imagem" class="imagem"
+			            style="max-width: 25%; border-radius: 20px; box-shadow: 0 0 20px pink;" onclick="abrirModal(this.src)">
+				<p></p>
+				<p>Infelizmente, depois desse momento, a distância tomou conta. Entre aproximações e afastamentos, brigas e discussões, cada vez mais a vida nos afastava um pouco. O homem insistente, chato, sempre mandava mensagem novamente, sempre tentando. E assim foram passando 10 anos de idas e vindas: de 2014 até 2024, uma vida...</p>
+				<img src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/rockinrio.jpg" alt="Imagem" class="imagem"
+			    	style="max-width: 70%; border-radius: 20px; box-shadow: 0 0 20px pink;" onclick="abrirModal(this.src)">
+				<p></p>
+				<p>Depois disso, após Deus esfregar na nossa cara que era para ser, no dia 3 de novembro foi quando tudo se iniciou, após ela falar sobre um filme que viu e chorou. No dia 4 de novembro, falei sobre um filme que seria o responsável pelo nosso primeiro encontro: Operação Natal. Mandei o trailer e “parece bom” foi a resposta que recebi. Então, no dia 5, resolvi tentar: “vamos ver juntos?”. E, com isso, veio o balde de água fria: “se for de amigo eu topo”. Tentei me manter forte, mesmo meio entristecido, e justifiquei que realmente seria assim, pois preferia tê-la como minha amiga e próxima a mim do que longe.</p>
+			<p>E lembra que eu falei que ela estava linda? Olha isso… MEU DEUS DO CÉU.</p>
+				<img src="https://lh3.googleusercontent.com/d/1kgy1TJxeK4n9YrqLoMqwNTJIpO5G5XfV" alt="Imagem" class="imagem"
+			    	style="max-width: 70%; border-radius: 20px; box-shadow: 0 0 20px pink;" onclick="abrirModal(this.src)">
+				<p></p>
+				<p>Luan e Mônica: um amor que demorou, mas que irá durar para todo o sempre!!!!</p>	
+				<img src="https://lh3.googleusercontent.com/d/1ElPMiEUuVJFiaiIR-zZEoiKzSqFWknY4" alt="Imagem" class="imagem"
+			    	style="max-width: 70%; border-radius: 20px; box-shadow: 0 0 20px pink;" onclick="abrirModal(this.src)">
+			</div>
+		</div>
+	</main>
+  
+<button class="voltar-btn" onclick="irParaPagina('index.html')">⬅️</button>
+  
+  <script src="script.js"></script>
+</body>
+</html>
