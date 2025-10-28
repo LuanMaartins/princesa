@@ -10,18 +10,22 @@
 
 	<style>
 	body { 
-	margin: 0; overflow: auto; 
-	background: #000; 
-	line-height: 1.6; /* aumenta o espaçamento entre linhas */ 
-	padding: 20px; 
-	}	
-  
-		.texto-principal {
-    max-width: 800px; /* largura máxima do texto */
-    margin: 0 auto; /* centraliza na página */			
-	text-align: justify; /* justifica o texto */ 
-  }
-
+	    margin: 0; 
+	    overflow: auto; 
+	    background: #000; 
+	    line-height: 1.6; 
+	    padding: 20px; 
+	    display: flex; 
+	    justify-content: center; /* centraliza horizontalmente */
+	    align-items: center;     /* centraliza verticalmente */
+	    min-height: 100vh;       /* garante altura mínima da tela */
+	    flex-direction: column;  /* mantém os elementos empilhados */
+	}
+	
+	.texto-principal {
+	    max-width: 800px; 
+	    text-align: justify; 
+	}
   .imagem {
     display: block;
     margin: 40px auto; /* espaçamento top e bottom + centraliza */
