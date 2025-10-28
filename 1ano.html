@@ -49,12 +49,20 @@
       align-items: center;
       z-index: 1001;	
     }
-    .modal img video {
+    .modal img {
       max-width: 90%;
       max-height: 90%;
       border-radius: 15px;		
       z-index: 1002;
     }
+
+	.modal video {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 15px;
+  z-index: 1002;
+}
+		
   </style>
 	
 </head>
@@ -100,17 +108,17 @@
 				<img src="https://lh3.googleusercontent.com/d/1ElPMiEUuVJFiaiIR-zZEoiKzSqFWknY4" alt="Imagem" class="imagem"
 			    	style="max-width: 70%; border-radius: 20px; box-shadow: 0 0 20px white;" onclick="abrirModal(this.src)">
 				<!-- Container da miniatura -->
-				<div id="thumbnail_videos_videos" style="cursor:pointer; display:inline-block; width:320px; height:240px; background:#000;"></div>
+				<div id="thumbnail_videos_videos" style="cursor:pointer; width:320px; height:240px; background:#000; position:relative;"></div>
 			</div>
 		</div>
 	</main>
 	
 <!-- Container do vídeo (inicialmente escondido) -->
 <div id="modal_videos_videos" class="modal">
-	<video id="video_videos_videos" width="320" height="240" controls style="display:none;">
-	    <source src="https://github.com/LuanMaartins/princesa/blob/main/VID-20250706-WA0007.mp4?raw=true" type="video/mp4">
-	    Seu navegador não suporta vídeo HTML5.
-	</video>
+    <video id="video_videos_videos" controls>
+        <source src="https://github.com/LuanMaartins/princesa/blob/main/VID-20250706-WA0007.mp4?raw=true" type="video/mp4">
+        Seu navegador não suporta vídeo HTML5.
+    </video>
 </div>
   
 <button class="voltar-btn" onclick="irParaPagina('index.html')">⬅️</button>
