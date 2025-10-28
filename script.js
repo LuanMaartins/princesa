@@ -354,8 +354,8 @@ const video_videos_videos = document.getElementById("video_videos_videos");
 
 // Criar vídeo temporário para capturar o primeiro frame
 const tempVideo = document.createElement("video");
-tempVideo.src = "https://drive.google.com/uc?export=download&id=1u8iO6q7rzLWB-F3izNJms3LpPEaDWTt6";
-tempVideo.crossOrigin = "anonymous"; // evita problemas de CORS
+tempVideo.src = "https://github.com/LuanMaartins/princesa/blob/main/VID-20250706-WA0007.mp4?raw=true";
+tempVideo.crossOrigin = "anonymous"; // importante para evitar problemas de CORS
 tempVideo.muted = true; // não reproduzir som
 tempVideo.addEventListener("loadeddata", () => {
     // Criar canvas com o primeiro frame
@@ -364,7 +364,7 @@ tempVideo.addEventListener("loadeddata", () => {
     canvas.height = tempVideo.videoHeight;
     const ctx = canvas.getContext("2d");
     ctx.drawImage(tempVideo, 0, 0, canvas.width, canvas.height);
-
+    
     // Ajustar canvas no container
     canvas.style.width = "100%";
     canvas.style.height = "100%";
