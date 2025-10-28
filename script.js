@@ -348,32 +348,3 @@ function mostrarExplosaoDeImagens() {
       });
     });
 	}
-
-
-function abrirVideo() {
-  const modal = document.getElementById("videoModal");
-  const video = document.getElementById("videoPlayer");
-  const audio = document.getElementById("musica");
-
-  // Pausa o áudio se estiver tocando
-  if (!audio.paused) {
-    audio.pause();
-  }
-
-  // Exibe o modal e inicia o vídeo
-  modal.style.display = "block";
-  video.currentTime = 0;
-  video.play();
-}
-
-function fecharVideo(event) {
-  const modal = document.getElementById("videoModal");
-  const video = document.getElementById("videoPlayer");
-
-  // Fecha apenas se clicar fora do vídeo
-  if (event.target === modal) {
-    video.pause();
-    modal.style.display = "none";
-  }
-}
-
