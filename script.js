@@ -348,3 +348,19 @@ function mostrarExplosaoDeImagens() {
       });
     });
 	}
+
+	const thumbnail_videos_videos = document.getElementById("thumbnail_videos_videos");
+    const video_videos_videos = document.getElementById("video_videos_videos");
+
+    thumbnail_videos_videos.addEventListener("click", function() {
+        // Pausa ou toca a música usando seu toggleAudio() existente
+        const musica = document.getElementById("musica");
+        if (!musica.paused) toggleAudio(); // pausa se estiver tocando
+
+        // Esconde a miniatura
+        thumbnail_videos_videos.style.display = "none";
+
+        // Mostra o vídeo e inicia
+        video_videos_videos.style.display = "block";
+        video_videos_videos.play();
+    });
