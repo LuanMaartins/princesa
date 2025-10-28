@@ -350,33 +350,52 @@ function mostrarExplosaoDeImagens() {
 	}
 
 const thumbnailContainer_videos_videos = document.getElementById("thumbnail_videos_videos");
+const modal_videos_videos = document.getElementById("modal_videos_videos");
 const video_videos_videos = document.getElementById("video_videos_videos");
 
 // Criar vídeo temporário para capturar o primeiro frame
 const tempVideo = document.createElement("video");
 tempVideo.src = "https://github.com/LuanMaartins/princesa/blob/main/VID-20250706-WA0007.mp4?raw=true";
-tempVideo.crossOrigin = "anonymous"; // importante para evitar problemas de CORS
-tempVideo.muted = true; // não reproduzir som
+tempVideo.crossOrigin = "anonymous"; 
+tempVideo.muted = true; 
 tempVideo.addEventListener("loadeddata", () => {
-    // Criar canvas com o primeiro frame
     const canvas = document.createElement("canvas");
     canvas.width = tempVideo.videoWidth;
     canvas.height = tempVideo.videoHeight;
     const ctx = canvas.getContext("2d");
     ctx.drawImage(tempVideo, 0, 0, canvas.width, canvas.height);
     
-    // Ajustar canvas no container
     canvas.style.width = "100%";
     canvas.style.height = "100%";
     thumbnailContainer_videos_videos.appendChild(canvas);
+
+    // Ícone de play sobre a miniatura
+    const playIcon = document.createElement("span");
+    playIcon.innerText = "▶️";
+    playIcon.style.position = "absolute";
+    playIcon.style.top = "50%";
+    playIcon.style.left = "50%";
+    playIcon.style.transform = "translate(-50%, -50%)";
+    playIcon.style.fontSize = "50px";
+    playIcon.style.color = "white";
+    thumbnailContainer_videos_videos.appendChild(playIcon);
 });
 
-// Clique na miniatura inicia o vídeo e pausa a música
+// Clique na miniatura abre o modal e inicia o vídeo
 thumbnailContainer_videos_videos.addEventListener("click", function() {
     const musica = document.getElementById("musica");
-    if (!musica.paused) toggleAudio(); // usa seu toggleAudio() existente
+    if (!musica.paused) toggleAudio(); // pausa a música
 
-    thumbnailContainer_videos_videos.style.display = "none"; // esconde a miniatura
-    video_videos_videos.style.display = "block"; // mostra o vídeo
+    modal_videos_videos.style.display = "flex"; // mostra o modal
     video_videos_videos.play(); // inicia o vídeo
 });
+
+// Fechar modal ao clicar no fundo
+modal_videos_videos.addEventListener("click", (e) => {
+    if (e.target === modal_videos_videos) { 
+        modal_videos_videos.style.display = "none";
+        video_videos_videos.pause();
+        video_videos_videos.currentTime = 0; 
+    }
+});
+
