@@ -52,6 +52,8 @@
       justify-content: center;
       align-items: center;
       z-index: 1001;	
+	  cursor: pointer;
+      display: flex; 
     }
     .modal img {
       max-width: 90%;
@@ -59,13 +61,6 @@
       border-radius: 15px;		
       z-index: 1002;
     }
-
-	@media (max-width: 350px) {
-	  .galeria img {
-	    width: calc(50% - 10px); 
-	    height: auto;             
-	  }
-	}
 
   </style>
 	
@@ -88,9 +83,9 @@
 	    <h1>Nossa História</h1>
 	</header>
 
-<div id="modal" class="modal" onclick="fecharModal()">
-				<img id="imgModal" src="">
-			</div>
+	<div id="modal" class="modal" onclick="fecharModal()">
+	    <img id="imgModal" src="" alt="Imagem">
+	</div>
 	
 	<main>
 		<div class="wrapper">
@@ -101,9 +96,9 @@
 				<p>Naquele ano em questão, 2016, seu último ano, em que iria se formar, eu pude estar ali ao lado dela, ajudando-a a ficar tranquila para as suas apresentações e participando cada vez mais da sua vida. E um breve spoiler: a mulher é inteligente, viu? Mestre, futura doutora, é para poucos.</p>
 				<p>Logo em seguida, veio o momento mais temido para mim: o final do ano, em que a distância tomaria conta, e só Deus saberia como seria nossa vida daquele momento em diante... Continuei tentando. Reunião de formatura na escola? Tô indo aí te ver. Formatura dela? Chupa sociedade! Ela me convidou, e eu fui lá só por causa dela. Mas então, o que mais seria reservado para nós?</p>
 				<img src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/IMG-20161221-WA0005.jpg" alt="Imagem" class="imagem"
-			            style="max-width: 25%; border-radius: 20px; box-shadow: 0 0 20px pink;">
+			            style="max-width: 25%; border-radius: 20px; box-shadow: 0 0 20px pink;" onclick="abrirModal(this.src)">
 				<img src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/20170720_153649.jpg" alt="Imagem" class="imagem"
-			            style="max-width: 25%; border-radius: 20px; box-shadow: 0 0 20px pink;">
+			            style="max-width: 25%; border-radius: 20px; box-shadow: 0 0 20px pink;" onclick="abrirModal(this.src)">
 				<p></p>
 				<p></p>
 				<br></br>
@@ -112,7 +107,7 @@
 				<p>Até que, finalmente, no dia 22 de junho de 2024, Deus mexeu seus pauzinhos para que pudéssemos nos ver. Em uma ida improvável à academia de Madureira com dois amigos (Mahat e Andressa), o mais improvável ainda aconteceu: ela saindo da academia na hora em que eu estava chegando. Finalmente a vi novamente, depois de nem sei quantos anos. Ela estava ali, quase me agredindo, achando que era um tarado de Madureira mexendo com ela, mas, ainda assim, ali estava ela, a minha princesa, tão linda como sempre.<p>
 				<p>Após isso, em que a aproximação já tinha ocorrido, fomos então ao mesmo evento, um evento bem tranquilo, vazio, em que qualquer um conseguiria se encontrar com facilidade, o Rock in Rio, estava tudo combinado, chegando la, tentariamos no encontrar e se ver mais uma vez, mas não foi preciso, Deus se encaregou desse serviço para nós, ao chegar ao local, por um tremenda coincidencia, chegamos juntos, ela atravessou a rua bem ali, na minha frente, logo pensei "meu deus, não é possivel", seria realmente coincidencia, ou o destino nos dando o maior dos sinais?<p>
 				<img src="https://raw.githubusercontent.com/LuanMaartins/Princesa/main/rockinrio.jpg" alt="Imagem" class="imagem"
-			    	style="max-width: 70%; border-radius: 20px; box-shadow: 0 0 20px pink;">
+			    	style="max-width: 70%; border-radius: 20px; box-shadow: 0 0 20px pink;" onclick="abrirModal(this.src)">
 			</div>
 		</div>
 	</main>
