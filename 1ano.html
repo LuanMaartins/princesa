@@ -96,7 +96,15 @@
 	<div id="videoModal" class="modal" onclick="fecharVideo(event)">
 		<div class="modal-content">
 			<video id="videoPlayer" controls>
-				<source src="https://drive.google.com/uc?export=download&id=1u8iO6q7rzLWB-F3izNJms3LpPEaDWTt6" type="video/mp4">
+				<video
+				  src="https://drive.google.com/uc?export=download&id=1u8iO6q7rzLWB-F3izNJms3LpPEaDWTt6"
+				  controls
+				  autoplay
+				  muted
+				  loop
+				  style="max-width: 70%; border-radius: 20px; box-shadow: 0 0 20px white;">
+				</video>
+
 					Seu navegador não suporta o elemento de vídeo.
 			</video>
 		 </div>
@@ -123,7 +131,14 @@
 			    	style="max-width: 70%; border-radius: 20px; box-shadow: 0 0 20px white;" onclick="abrirModal(this.src)">
 				<div class="video-thumb">
 				  <video id="videoMini" muted playsinline onclick="abrirVideo()">
-				    <source src="https://drive.google.com/uc?export=download&id=1u8iO6q7rzLWB-F3izNJms3LpPEaDWTt6" type="video/mp4">
+				    <video
+					  src="https://drive.google.com/uc?export=download&id=1u8iO6q7rzLWB-F3izNJms3LpPEaDWTt6"
+					  controls
+					  autoplay
+					  muted
+					  loop
+					  style="max-width: 70%; border-radius: 20px; box-shadow: 0 0 20px white;">
+					</video>
 				    Seu navegador não suporta vídeo.
 				  </video>
 				</div>
