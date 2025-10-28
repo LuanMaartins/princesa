@@ -384,7 +384,7 @@ tempVideo.addEventListener("loadeddata", () => {
 // Clique na miniatura abre o modal e inicia o vídeo
 thumbnailContainer_videos_videos.addEventListener("click", function() {
     const musica = document.getElementById("musica");
-    if (!musica.paused) toggleAudio(); // pausa a música
+    musica.pause(); // pausa a música de forma garantida
 
     modal_videos_videos.style.display = "flex"; // mostra o modal
     video_videos_videos.play(); // inicia o vídeo
@@ -396,6 +396,7 @@ modal_videos_videos.addEventListener("click", (e) => {
         modal_videos_videos.style.display = "none";
         video_videos_videos.pause();
         video_videos_videos.currentTime = 0; 
+        musica.play(); // retoma a música
     }
 });
 
