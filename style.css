@@ -48,7 +48,7 @@ body {
             text-align: center;
             font-size: 3rem;
             font-family: 'Great Vibes', cursive;
-            text-shadow: 0 0 10px white, 0 0 20px red;
+            text-shadow: 0 0 10px white, 0 0 20px gray;
             position: fixed;
             top: 10px;
             left: 50%;
@@ -66,7 +66,7 @@ body {
 
         h1 {
             font-size: 2em;
-            text-shadow: 0 0 10px white, 0 0 20px red;
+            text-shadow: 0 0 10px white, 0 0 20px gray;
             animation: glow 1.5s infinite alternate;
         }
 
@@ -105,7 +105,7 @@ body {
                 text-shadow: 0 0 10px white, 0 0 20px white;
             }
             to {
-                text-shadow: 0 0 20px red, 0 0 30px red;
+                text-shadow: 0 0 20px gray, 0 0 30px gray;
             }
         }
 
@@ -127,7 +127,7 @@ body {
         }
 
         button:hover {
-            background-color: red;
+            background-color: gray;
             color: white;
         }
         .popup {
@@ -140,7 +140,7 @@ body {
             max-height: 80vh; 
             background: white; 
             padding: 20px;
-            box-shadow: 0px 0px 10px red;
+            box-shadow: 0px 0px 10px gray;
             display: none;
             z-index: 1000;
             border-radius: 10px;
@@ -163,7 +163,7 @@ body {
             transform: translate(-50%, -50%);
             background: white; 
             padding: 20px;
-            box-shadow: 0px 0px 10px red;
+            box-shadow: 0px 0px 10px gray;
             display: none;
             z-index: 1000;
             border-radius: 10px;
@@ -175,7 +175,7 @@ body {
             right: 12px;
             cursor: pointer;
             font-size: 15px;
-            color: red;
+            color: gray;
             font-weight: bold;
         }
         .popup .close-btn {
@@ -184,7 +184,7 @@ body {
             right: 12px;
             cursor: pointer;
             font-size: 20px;
-            color: red;
+            color: gray;
             font-weight: bold;
         }        
         .close-btn-footer {
@@ -192,7 +192,7 @@ body {
             right: 12px;
             cursor: pointer;
             font-size: 20px;
-            color: red;
+            color: gray;
             font-weight: bold;
         }
         .footer {
@@ -206,14 +206,14 @@ body {
             background-color: black;
         }
 
-        .creditos {
+        .cgrayitos {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             background: white;
             padding: 20px;
-            box-shadow: 0px 0px 10px red;
+            box-shadow: 0px 0px 10px gray;
             display: none;
             z-index: 1000;
             border-radius: 10px;
@@ -265,7 +265,7 @@ body {
         }
         
         .pause-btn:hover {
-            background-color: red;
+            background-color: gray;
             color: white;
         }
         .lock-btn {
@@ -335,7 +335,7 @@ body {
 .menu-fixo h1 {
   font-family: 'Great Vibes', cursive;
   font-size: 2.8rem;
-  text-shadow: 0 0 10px white, 0 0 20px red;
+  text-shadow: 0 0 10px white, 0 0 20px gray;
   margin: 0;
 }
 
@@ -372,7 +372,7 @@ main {
 }
 
 .submenu-btn:hover {
-    background-color: red;
+    background-color: gray;
     color: white;
 }
 
