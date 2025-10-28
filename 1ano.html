@@ -56,6 +56,18 @@
       z-index: 1002;
     }
 
+	.video-thumb img {
+  max-width: 40%;
+  border-radius: 20px;
+  box-shadow: 0 0 20px white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.video-thumb img:hover {
+  transform: scale(1.05);
+}
+
   </style>
 	
 </head>
@@ -80,6 +92,15 @@
 	<div id="modal" class="modal" onclick="fecharModal()">
 	    <img id="imgModal" src="" alt="Imagem">
 	</div>
+	<!-- Modal do vídeo -->
+	<div id="videoModal" class="modal" onclick="fecharVideo(event)">
+		<div class="modal-content">
+			<video id="videoPlayer" controls>
+				<source src="https://drive.google.com/uc?export=download&id=1u8iO6q7rzLWB-F3izNJms3LpPEaDWTt6" type="video/mp4">
+					Seu navegador não suporta o elemento de vídeo.
+			</video>
+		 </div>
+	</div>
 	
 	<main>
 		<div class="wrapper">
@@ -100,6 +121,12 @@
 				<p>Luan e Mônica: um amor que demorou, mas que irá durar para todo o sempre!!!!</p>	
 				<img src="https://lh3.googleusercontent.com/d/1ElPMiEUuVJFiaiIR-zZEoiKzSqFWknY4" alt="Imagem" class="imagem"
 			    	style="max-width: 70%; border-radius: 20px; box-shadow: 0 0 20px white;" onclick="abrirModal(this.src)">
+				<div class="video-thumb">
+				  <video id="videoMini" muted playsinline onclick="abrirVideo()">
+				    <source src="https://drive.google.com/uc?export=download&id=1u8iO6q7rzLWB-F3izNJms3LpPEaDWTt6" type="video/mp4">
+				    Seu navegador não suporta vídeo.
+				  </video>
+				</div>
 			</div>
 		</div>
 	</main>
