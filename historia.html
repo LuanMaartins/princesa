@@ -34,9 +34,13 @@
   }
 
 	.wrapper {
+    display: flex;
     justify-content: center; /* centraliza horizontalmente */
-    align-items: center;     /* centraliza verticalmente se possível */
-    padding: 20px;display: flex;
+    align-items: center;     /* centraliza verticalmente */
+    min-height: calc(100vh - 60px); /* altura da tela menos altura do header */
+    padding: 20px;
+    margin-top: 60px; /* espaço para o header fixo */
+    box-sizing: border-box;
 }
 
   </style>
