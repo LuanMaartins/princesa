@@ -49,7 +49,7 @@
       align-items: center;
       z-index: 1001;	
     }
-    .modal img {
+    .modal img video {
       max-width: 90%;
       max-height: 90%;
       border-radius: 15px;		
@@ -106,10 +106,12 @@
 	</main>
 	
 <!-- Container do vídeo (inicialmente escondido) -->
-<video id="video_videos_videos" width="320" height="240" controls style="display:none;">
-    <source src="https://github.com/LuanMaartins/princesa/blob/main/VID-20250706-WA0007.mp4?raw=true" type="video/mp4">
-    Seu navegador não suporta vídeo HTML5.
-</video>
+<div id="modal_videos_videos" class="modal">
+	<video id="video_videos_videos" width="320" height="240" controls style="display:none;">
+	    <source src="https://github.com/LuanMaartins/princesa/blob/main/VID-20250706-WA0007.mp4?raw=true" type="video/mp4">
+	    Seu navegador não suporta vídeo HTML5.
+	</video>
+</div>
   
 <button class="voltar-btn" onclick="irParaPagina('index.html')">⬅️</button>
   
