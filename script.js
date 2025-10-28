@@ -349,18 +349,34 @@ function mostrarExplosaoDeImagens() {
     });
 	}
 
-	const thumbnail_videos_videos = document.getElementById("thumbnail_videos_videos");
-    const video_videos_videos = document.getElementById("video_videos_videos");
+const thumbnailContainer_videos_videos = document.getElementById("thumbnail_videos_videos");
+const video_videos_videos = document.getElementById("video_videos_videos");
 
-    thumbnail_videos_videos.addEventListener("click", function() {
-        // Pausa ou toca a música usando seu toggleAudio() existente
-        const musica = document.getElementById("musica");
-        if (!musica.paused) toggleAudio(); // pausa se estiver tocando
+// Criar vídeo temporário para capturar o primeiro frame
+const tempVideo = document.createElement("video");
+tempVideo.src = "https://github.com/LuanMaartins/princesa/blob/main/VID-20250706-WA0007.mp4?raw=true";
+tempVideo.crossOrigin = "anonymous"; // importante para evitar problemas de CORS
+tempVideo.muted = true; // não reproduzir som
+tempVideo.addEventListener("loadeddata", () => {
+    // Criar canvas com o primeiro frame
+    const canvas = document.createElement("canvas");
+    canvas.width = tempVideo.videoWidth;
+    canvas.height = tempVideo.videoHeight;
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(tempVideo, 0, 0, canvas.width, canvas.height);
+    
+    // Ajustar canvas no container
+    canvas.style.width = "100%";
+    canvas.style.height = "100%";
+    thumbnailContainer_videos_videos.appendChild(canvas);
+});
 
-        // Esconde a miniatura
-        thumbnail_videos_videos.style.display = "none";
+// Clique na miniatura inicia o vídeo e pausa a música
+thumbnailContainer_videos_videos.addEventListener("click", function() {
+    const musica = document.getElementById("musica");
+    if (!musica.paused) toggleAudio(); // usa seu toggleAudio() existente
 
-        // Mostra o vídeo e inicia
-        video_videos_videos.style.display = "block";
-        video_videos_videos.play();
-    });
+    thumbnailContainer_videos_videos.style.display = "none"; // esconde a miniatura
+    video_videos_videos.style.display = "block"; // mostra o vídeo
+    video_videos_videos.play(); // inicia o vídeo
+});
