@@ -9,27 +9,17 @@
     <link rel="stylesheet" href="style.css">
 
 	<style>
-body {
-    margin: 0;
-    padding: 0;
-    background: #000;
-    display: flex;
-    justify-content: center; /* centraliza horizontalmente */
-    /* se quiser centralizar verticalmente, descomente a linha abaixo */
-    /* align-items: center; */
-    min-height: 100vh;
-}
-
-.container {
-    text-align: center;   /* centraliza o texto dentro da div */
-    padding: 20px;        /* espaçamento interno */
-    max-width: 800px;     /* opcional: limita a largura da div */
-    box-sizing: border-box;
-}
-		
-  .texto-principal {
+	body { 
+	margin: 0; overflow: auto; 
+	background: #000; 
+	line-height: 1.6; /* aumenta o espaçamento entre linhas */ 
+	padding: 20px; 
+	}	
+  
+		.texto-principal {
     max-width: 800px; /* largura máxima do texto */
-    margin: 0 auto; /* centraliza na página */
+    margin: 0 auto; /* centraliza na página */			
+	text-align: justify; /* justifica o texto */ 
   }
 
   .imagem {
