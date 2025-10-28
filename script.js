@@ -354,7 +354,7 @@ const video_videos_videos = document.getElementById("video_videos_videos");
 
 // Criar vídeo temporário para capturar o primeiro frame
 const tempVideo = document.createElement("video");
-tempVideo.src = "https://drive.google.com/uc?export=download&id=1ABCDEF123456789";
+tempVideo.src = "https://drive.google.com/uc?export=download&id=1u8iO6q7rzLWB-F3izNJms3LpPEaDWTt6";
 tempVideo.crossOrigin = "anonymous"; // evita problemas de CORS
 tempVideo.muted = true; // não reproduzir som
 tempVideo.addEventListener("loadeddata", () => {
