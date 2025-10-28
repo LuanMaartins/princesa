@@ -60,7 +60,7 @@ body {
             width: 100%;
         }
 
-        h1, t {
+        h1, .timer {
             font-family: 'Great Vibes', cursive;
         }
 
@@ -70,7 +70,7 @@ body {
             animation: glow 1.5s infinite alternate;
         }
 
-        t {
+        .timer {
             font-size: 1.5em;
         }
 
@@ -159,7 +159,7 @@ body {
                 font-size: 0.9rem; /* menor para caber na tela */
               }
             
-              t {
+              .timer {
                 font-size: 1em; /* diminui proporcionalmente */
               }
             }
