@@ -389,7 +389,7 @@ main {
   display: flex;           /* ativa o flex */
   flex-wrap: wrap;         /* permite quebra de linha se não couber */
   justify-content: center; /* centraliza o grupo */
-  gap: 15px;               /* espaço entre imagens */
+  gap: 5px;               /* espaço entre imagens */
 }
 .grupo-imagens-flex .imagem {
   max-width: 45%;          /* cada imagem ocupa no máximo 45% do contêiner */
