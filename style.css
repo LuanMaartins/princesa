@@ -385,6 +385,19 @@ main {
     text-align: center;
 }
 
+.grupo-imagens-flex {
+  display: flex;           /* ativa o flex */
+  flex-wrap: wrap;         /* permite quebra de linha se não couber */
+  justify-content: center; /* centraliza o grupo */
+  gap: 15px;               /* espaço entre imagens */
+}
+.grupo-imagens-flex .imagem {
+  max-width: 45%;          /* cada imagem ocupa no máximo 45% do contêiner */
+  border-radius: 20px;
+  box-shadow: 0 0 20px white;
+  cursor: pointer;
+}
+
 /* Personalização visual */
 ::-webkit-scrollbar {
   width: 10px;
