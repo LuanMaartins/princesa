@@ -392,13 +392,10 @@ main {
   gap: 10px;               /* espaço entre imagens */
 }
 .grupo-imagens .imagem {
-  width: auto;
-  height: auto;
-  max-width: 30%; /* controla o tamanho sem distorcer */
+   max-width: 45%;
   border-radius: 20px;
   box-shadow: 0 0 20px white;
   cursor: pointer;
-  object-fit: cover; /* corta o excesso se precisar preencher */
 }
 
 /* Personalização visual */
