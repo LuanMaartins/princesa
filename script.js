@@ -95,7 +95,7 @@ function applyDateMask(input) {
         async function atualizarTempo() {
             await sincronizarHorario(); // Ajusta a diferença antes de iniciar
         
-            const inicio = new Date('2024-11-30T15:05:00-03:00'); // Data fixa do início
+            const inicio = new Date('2024-11-30T00:00:00-03:00'); // Data fixa do início
         
             setInterval(() => {
                 const agora = new Date(new Date().getTime() + diferencaHorario); // Ajusta para horário de Brasília
