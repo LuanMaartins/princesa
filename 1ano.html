@@ -14,11 +14,11 @@
 	text-align: center;
 	}
 	
-.texto-principal {
-    max-width: 800px;
-    width: 100%;
-    text-align: justify;
-}
+	.texto-principal {
+	    max-width: 800px;
+	    width: 100%;
+	    text-align: justify;
+	}
   .imagem {
     display: block;
     margin: 40px auto; /* espaçamento top e bottom + centraliza */
@@ -61,6 +61,22 @@
   max-height: 90%;
   border-radius: 15px;
   z-index: 1002;
+}
+.play-icon-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none; 
+}
+		
+.play-icon {
+  width: 0;
+  height: 0;
+  border-left: 25px solid white;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  opacity: 0.8;
 }
 		
   </style>
@@ -294,40 +310,49 @@
 				<img src="https://lh3.googleusercontent.com/d/1zwYtn7b8fpG4CTEwWygLClty8x2uuJ8k" alt="Imagem" class="imagem"
 				    	style="max-width: 70%; border-radius: 20px; box-shadow: 0 0 20px white; cursor:pointer;" onclick="abrirModal(this.src)">
 				<p></p>
-				<!-- Container da miniatura -->
-				<!--div id="thumbnail_videos_videos" style="cursor:pointer; width:320px; height:240px; background:#000; position:relative;"></div-->
-				<div id="thumbnail_videos_videos" style="cursor:pointer; position:relative; display: inline-block; margin-bottom:40px;">
+				<p>Começando agosto, em breve seria o meu aniversário, no dia 10.</p>
+				<p>Mas esse mês reservava algo ainda mais especial: a defesa de mestrado do meu amor.</p>
+				<p>Com a ideia da sua melhor amiga (Vitória, tmj), ela organizou os comes e bebes padrão das defesas realizadas por eles.</p>
+				<p>Mas, nesse caso, teria algo a mais, uma surpresa da qual eu poderia fazer parte.</p>
+				<p>Teria que ver o bolo e, então, por que não ser um bolo que ela já tinha elogiado algumas vezes? O da sua própria sogra, minha mãe.</p>
+				<p>Com o passar dos dias, fomos preparando alguns enfeites com suas fotos de quando era criança, momentos que seriam bons de relembrar.</p>
+				<p>E, seguindo nisso, fazendo as coisas às escondidas, passou o meu aniversário, que tive o prazer de passar ao lado dela, juntinho, agarradinho, e esse foi o melhor presente de todos: ter ela aqui comigo.</p>
+				<p>A defesa seria no dia 21 de agosto. Tínhamos combinado que eu iria com ela cedo, e eu tirei o dia de folga para poder acompanhá-la e fazer de tudo para que tivesse o melhor dia possível.</p>
+				<p>Eu iria levar o bolo, mas como faria isso sozinho sem fazer uma cagada?</p>
+				<p>Então surgiu a ideia: dizer a ela que, ao ir buscá-la, eu havia esquecido algo em casa. Como moramos pertinho, tudo perfeito, daria certo.</p>
+				<p>Nunca vou me esquecer do momento em que meus pais abriram o portão e ela viu, ali, nas mãos da minha mãe, o bolo que seria da sua comemoração.</p>
+				<p>O seu rosto sem saber como reagir, a felicidade no olhar e, após terminar de gravar, o momento ainda mais lindo, quando a emoção foi mais do que ela conseguia segurar e quase se entregou às lágrimas.</p>
+				<p>Foi tudo tão lindo, tudo tão maravilhoso e, para a surpresa do total de zero pessoas, sua apresentação foi um espetáculo. Tudo o que ela fez foi elogiado. Todo o seu esforço foi recompensado.</p>
+				<p>Não mais Mônica L. Ribeiro-Almeida, mas Mestre Mônica L. Ribeiro-Almeida.</p>
+				<p>Que orgulho, meu Deus!!!</p>
+				<div id="thumbnail_videos_videos" data-video-src="https://github.com/LuanMaartins/princesa/blob/main/20250821_065305.mp4?raw=true"
+					style="cursor:pointer; position:relative; display: inline-block; margin-bottom:40px;">
 				    <img src="https://lh3.googleusercontent.com/d/1ElPMiEUuVJFiaiIR-zZEoiKzSqFWknY4" alt="Miniatura do vídeo" 
 				         style="max-width: 50%; display: block; margin: auto; border-radius: 20px; box-shadow: 0 0 20px white;">
-				     <!-- Ícone de play centralizado -->
-					    <div style="
-					        position: absolute;
-					        top: 50%;
-					        left: 50%;
-					        transform: translate(-50%, -50%);
-					        pointer-events: none;
-					    ">
-					        <div style="
-					            width: 0;
-					            height: 0;
-					            border-left: 25px solid white;
-					            border-top: 15px solid transparent;
-					            border-bottom: 15px solid transparent;
-					            opacity: 0.8;
-					        "></div>
-					    </div>
+					<div class="play-icon-container">
+					  <div class="play-icon"></div>
+					</div>
+				</div>
+				<p></p>
+				<div id="thumbnail_videos_videos " data-video-src="https://github.com/LuanMaartins/princesa/blob/main/VID-20250706-WA0007.mp4?raw=true"
+					style="cursor:pointer; position:relative; display: inline-block; margin-bottom:40px;">
+				    <img src="https://lh3.googleusercontent.com/d/1ElPMiEUuVJFiaiIR-zZEoiKzSqFWknY4" alt="Miniatura do vídeo" 
+				         style="max-width: 50%; display: block; margin: auto; border-radius: 20px; box-shadow: 0 0 20px white;">
+					<div class="play-icon-container">
+					  <div class="play-icon"></div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</main>
 	
-<!-- Container do vídeo (inicialmente escondido) -->
-<div id="modal_videos_videos" class="modal">
-    <video id="video_videos_videos" controls>
-        <source src="https://github.com/LuanMaartins/princesa/blob/main/VID-20250706-WA0007.mp4?raw=true" type="video/mp4">
-        Seu navegador não suporta vídeo HTML5.
-    </video>
-</div>
+		<!-- Container do vídeo (inicialmente escondido) -->
+		<div id="modal_videos_videos" class="modal">
+		    <video id="video_videos_videos" controls>
+		        <source src="" type="video/mp4">
+		        Seu navegador não suporta vídeo HTML5.
+		    </video>
+		</div>
   
 <button class="voltar-btn" onclick="irParaPagina('index.html')">⬅️</button>
   
