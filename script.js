@@ -349,54 +349,49 @@ function mostrarExplosaoDeImagens() {
     });
 	}
 
-const thumbnailContainer_videos_videos = document.getElementById("thumbnail_videos_videos");
-const modal_videos_videos = document.getElementById("modal_videos_videos");
-const video_videos_videos = document.getElementById("video_videos_videos");
+const thumbnails = document.querySelectorAll('.thumbnail_videos_videos'); // todas as miniaturas
+const modal = document.getElementById('modal_videos_videos'); // modal único
+const video = document.getElementById('video_videos_videos'); // vídeo único no modal
 
-// Criar vídeo temporário para capturar o primeiro frame
-const tempVideo = document.createElement("video");
-tempVideo.src = "https://github.com/LuanMaartins/princesa/blob/main/VID-20250706-WA0007.mp4?raw=true";
-tempVideo.crossOrigin = "anonymous"; 
-tempVideo.muted = true; 
-tempVideo.addEventListener("loadeddata", () => {
-    const canvas = document.createElement("canvas");
-    canvas.width = tempVideo.videoWidth;
-    canvas.height = tempVideo.videoHeight;
-    const ctx = canvas.getContext("2d");
-    ctx.drawImage(tempVideo, 0, 0, canvas.width, canvas.height);
-    
-    canvas.style.width = "100%";
-    canvas.style.height = "100%";
-    thumbnailContainer_videos_videos.appendChild(canvas);
+thumbnails.forEach(thumbnail => {
+    // Criar canvas com o primeiro frame do vídeo
+    const tempVideo = document.createElement("video");
+    const videoSrc = thumbnail.getAttribute('data-video-src');
+    tempVideo.src = videoSrc;
+    tempVideo.crossOrigin = "anonymous"; 
+    tempVideo.muted = true; 
+    tempVideo.addEventListener("loadeddata", () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = tempVideo.videoWidth;
+        canvas.height = tempVideo.videoHeight;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(tempVideo, 0, 0, canvas.width, canvas.height);
+        
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        thumbnail.appendChild(canvas);
+    });
 
-    // Ícone de play sobre a miniatura
-    const playIcon = document.createElement("span");
-    playIcon.innerText = "▶️";
-    playIcon.style.position = "absolute";
-    playIcon.style.top = "50%";
-    playIcon.style.left = "50%";
-    playIcon.style.transform = "translate(-50%, -50%)";
-    playIcon.style.fontSize = "50px";
-    playIcon.style.color = "white";
-    thumbnailContainer_videos_videos.appendChild(playIcon);
-});
+    // Clique na miniatura abre o modal e inicia o vídeo correto
+    thumbnail.addEventListener("click", function() {
+        const musica = document.getElementById("musica");
+        if(musica) musica.pause(); // pausa a música de fundo
 
-// Clique na miniatura abre o modal e inicia o vídeo
-thumbnailContainer_videos_videos.addEventListener("click", function() {
-    const musica = document.getElementById("musica");
-    musica.pause(); // pausa a música de forma garantida
-
-    modal_videos_videos.style.display = "flex"; // mostra o modal
-    video_videos_videos.play(); // inicia o vídeo
+        video.querySelector('source').src = videoSrc; // atualiza vídeo
+        video.load();
+        modal.style.display = "flex"; // mostra o modal
+        video.play();
+    });
 });
 
 // Fechar modal ao clicar no fundo
-modal_videos_videos.addEventListener("click", (e) => {
-    if (e.target === modal_videos_videos) { 
-        modal_videos_videos.style.display = "none";
-        video_videos_videos.pause();
-        video_videos_videos.currentTime = 0; 
-        musica.play(); // retoma a música
+modal.addEventListener("click", (e) => {
+    if (e.target === modal) { 
+        modal.style.display = "none";
+        video.pause();
+        video.currentTime = 0; 
+        const musica = document.getElementById("musica");
+        if(musica) musica.play(); // retoma a música
     }
 });
 
