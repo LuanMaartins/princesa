@@ -77,6 +77,18 @@ function applyDateMask(input) {
             });    
         }
 
+		function acessarDiario() {
+		    var senha = prompt("Digite a senha para acessar:");
+		
+		    if (senha === "0") {
+		        // senha correta
+		        window.location.href = "diario.html";
+		    } else if (senha !== null) {
+		        // senha errada
+		        alert("Senha incorreta!");
+		    }
+		}
+
         function mostrarPopup() {
             document.getElementById('popup').style.display = 'block';
             document.getElementById('popup').scrollTop = 0; 
