@@ -70,6 +70,21 @@
 	</section>
 	</main>
 
+	<div id="acessarDiario" class="popup2">
+	    <span class="popupcadeado" onclick="closeDiario()">✖</span>
+	    <p>Digite a senha para acessar</p>
+	    <input 
+	        type="password"
+	        id="lockAnswerDiario"
+	        placeholder="Senha"
+	        maxlength="10"
+	    >
+	    <button onclick="checkDiario()">Confirmar</button>
+	    <p id="lockErrorDiario" style="color:red; display:none; margin-top:10px;">
+	        Senha incorreta!
+	    </p>
+	</div>
+
   <script src="script.js"></script>
 </body>
 </html>
