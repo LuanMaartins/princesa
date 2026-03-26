@@ -90,9 +90,9 @@ function applyDateMask(input) {
 		function checkDiario() {
 		    var answer = document.getElementById("lockAnswerDiario").value;
 		    if (answer === "0") {		
-		        closeLockXXX();		
+		        closeDiario();		
 		        // abre a página protegida
-		        window.location.href = "diario.html";
+		        irParaPagina('galeria.html')
 		    } else {		
 		        document.getElementById("lockErrorDiario").style.display = "block";
 		        document.getElementById("lockAnswerDiario").value = "";
