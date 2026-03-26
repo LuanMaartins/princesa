@@ -80,6 +80,10 @@ function applyDateMask(input) {
 		function acessarDiario() {
 		    document.getElementById("acessarDiario").style.display = "block";
 		    document.getElementById("lockErrorDiario").style.display = "none";
+
+			setTimeout(() => {
+		        document.getElementById("lockAnswerDiario").focus();
+		    }, 100);
 		}
 		
 		function closeDiario() {
@@ -88,7 +92,7 @@ function applyDateMask(input) {
 		}
 		
 		function checkDiario() {
-		    var answer = document.getElementById("lockAnswerDiario").value;
+		    var answer = document.getElementById("lockAnswerDiario").value.trim();
 		    if (answer === "0") {		
 		        closeDiario();		
 		        // abre a página protegida
