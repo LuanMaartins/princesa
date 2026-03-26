@@ -78,14 +78,24 @@ function applyDateMask(input) {
         }
 
 		function acessarDiario() {
-		    var senha = prompt("Digite a senha para acessar:");
+		    document.getElementById("acessarDiario").style.display = "block";
+		    document.getElementById("lockErrorDiario").style.display = "none";
+		}
 		
-		    if (senha === "0") {
-		        // senha correta
+		function closeDiario() {
+		    document.getElementById("acessarDiario").style.display = "none";
+		    document.getElementById("lockAnswerDiario").value = "";
+		}
+		
+		function checkDiario() {
+		    var answer = document.getElementById("lockAnswerDiario").value;
+		    if (answer === "0") {		
+		        closeLockXXX();		
+		        // abre a página protegida
 		        window.location.href = "diario.html";
-		    } else if (senha !== null) {
-		        // senha errada
-		        alert("Senha incorreta!");
+		    } else {		
+		        document.getElementById("lockErrorDiario").style.display = "block";
+		        document.getElementById("lockAnswerDiario").value = "";
 		    }
 		}
 
