@@ -92,7 +92,7 @@ function applyDateMask(input) {
 		    if (answer === "0") {		
 		        closeDiario();		
 		        // abre a página protegida
-		        irParaPagina('galeria.html')
+		        irParaPagina('diario.html')
 		    } else {		
 		        document.getElementById("lockErrorDiario").style.display = "block";
 		        document.getElementById("lockAnswerDiario").value = "";
