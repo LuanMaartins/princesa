@@ -93,7 +93,7 @@ function applyDateMask(input) {
 		
 		function checkDiario() {
 		    var answer = document.getElementById("lockAnswerDiario").value.trim();
-		    if (answer === "0") {		
+		    if (answer === "TEAMOPRINCESA") {		
 		        closeDiario();		
 		        // abre a página protegida
 		        irParaPagina('diario.html')
